@@ -170,8 +170,854 @@
 <body class="theme-bg-main theme-text-main min-h-screen selection:bg-yellow-200 selection:text-slate-900">
 
 <script>
-    // Database Soal Lengkap dari Screenshot User (101 - 130)
+    // Database Soal Lengkap Berdasarkan Masukan User (1 - 99 & Soal Pengembang)
     const DEFAULT_QUESTIONS = [
+        {
+            id: "q001",
+            questionText: "1. Customer ________ is one of the top priorities of this company.",
+            options: ["A. satisfied", "B. satisfying", "C. satisfy", "D. satisfaction"],
+            correctAnswer: "D. satisfaction",
+            explanation: "Setelah kata benda 'Customer' dibutuhkan noun pembentuk compound noun 'Customer satisfaction' (kepuasan pelanggan) yang bertindak sebagai subjek.",
+            part: "Part 5",
+            tags: "Grammar, Noun, Priority"
+        },
+        {
+            id: "q002",
+            questionText: "2. Remember that feeling confident and ________ is an important part of giving a presentation.",
+            options: ["A. relaxing", "B. relaxes", "C. relaxed", "D. relax"],
+            correctAnswer: "C. relaxed",
+            explanation: "Kata sambung 'and' menghubungkan kata sifat berpasangan (parallel structure). 'Confident' adalah adjective, maka pasangannya harus berupa adjective yaitu 'relaxed'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective, Parallel"
+        },
+        {
+            id: "q003",
+            questionText: "3. Final arrangements for the board of director's meeting haven't ________ been made.",
+            options: ["A. already", "B. still", "C. while", "D. yet"],
+            correctAnswer: "D. yet",
+            explanation: "Kata 'yet' biasanya diletakkan di akhir atau setelah kata 'not' (haven't yet) dalam kalimat negatif present perfect.",
+            part: "Part 5",
+            tags: "Grammar, Adverb, Present Perfect"
+        },
+        {
+            id: "q004",
+            questionText: "4. We have ________ all project managers to turn in their reports by the end of the week.",
+            options: ["A. asking", "B. asked", "C. ask", "D. asks"],
+            correctAnswer: "B. asked",
+            explanation: "Setelah auxiliary verb 'have' dalam present perfect tense, gunakan kata kerja bentuk ketiga (Verb 3) yaitu 'asked'.",
+            part: "Part 5",
+            tags: "Grammar, Verb, Present Perfect"
+        },
+        {
+            id: "q005",
+            questionText: "5. Nobody will be ________ to the room after the meeting has started.",
+            options: ["A. admitted", "B. omitted", "C. permitted", "D. submitted"],
+            correctAnswer: "A. admitted",
+            explanation: "Kata 'admitted' (diizinkan masuk/diterima) paling cocok secara arti (vocabulary) untuk konteks memasuki sebuah ruangan rapat.",
+            part: "Part 5",
+            tags: "Vocabulary, Verb, Admission"
+        },
+        {
+            id: "q006",
+            questionText: "6. Customer ________ representatives are available to answer your questions twenty-four hours a day.",
+            options: ["A. servants", "B. serving", "C. serve", "D. service"],
+            correctAnswer: "D. service",
+            explanation: "Frasa standar dalam dunia bisnis adalah 'Customer service representatives' (layanan pelanggan).",
+            part: "Part 5",
+            tags: "Noun Collocation, Business"
+        },
+        {
+            id: "q007",
+            questionText: "7. While some people enjoy receiving calls from telemarketers, other people find such calls ________ .",
+            options: ["A. annoys", "B. annoying", "C. annoyingly", "D. annoyed"],
+            correctAnswer: "B. annoying",
+            explanation: "Kata sifat yang berakhiran '-ing' (annoying) digunakan untuk menggambarkan karakteristik dari sesuatu benda/kejadian ('calls' membuat orang jengkel).",
+            part: "Part 5",
+            tags: "Grammar, Adjective, Participle"
+        },
+        {
+            id: "q008",
+            questionText: "8. If you are interested ________ receiving free samples of our product, simply fill out the enclosed card.",
+            options: ["A. to", "B. in", "C. of", "D. about"],
+            correctAnswer: "B. in",
+            explanation: "Adjective 'interested' selalu berpasangan dengan preposisi 'in' (interested in doing something).",
+            part: "Part 5",
+            tags: "Preposition, Collocation"
+        },
+        {
+            id: "q009",
+            questionText: "9. Because of the mild climate and rich soil, a wide variety of crops can be ________ in this region.",
+            options: ["A. grown up", "B. increased", "C. raised", "D. enlarged"],
+            correctAnswer: "A. grown up",
+            explanation: "Konteks kalimat membahas tentang tanaman pertanian (crops). 'Grown' (ditanam/ditumbuhkan) adalah kata yang paling tepat.",
+            part: "Part 5",
+            tags: "Vocabulary, Verb, Agriculture"
+        },
+        {
+            id: "q010",
+            questionText: "10. ________ she has worked very hard during the past year, Ms. Gomez has still failed to get promotion.",
+            options: ["A. Although", "B. because", "C. so", "D. In spite of"],
+            correctAnswer: "A. Although",
+            explanation: "Dibutuhkan kata penghubung (conjunction) yang menunjukkan pertentangan kontras dan diikuti oleh klausa lengkap (subject + verb) -> 'Although she has worked...'.",
+            part: "Part 5",
+            tags: "Conjunction, Contrast"
+        },
+        {
+            id: "q011",
+            questionText: "11. The new advertising campaign resulted in a ________ large increase in sales.",
+            options: ["A. surprised", "B. surprisingly", "C. surprise", "D. surprises"],
+            correctAnswer: "B. surprisingly",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'surprisingly' untuk menerangkan kata sifat (adjective) 'large'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb, Modifier"
+        },
+        {
+            id: "q012",
+            questionText: "12. A fine will be charged for all materials that are returned to the library ________ .",
+            options: ["A. past.", "B. over.", "C. later.", "D. above"],
+            correctAnswer: "A. past.",
+            explanation: "Denda akan dikenakan jika barang dikembalikan melewati batas waktu ('past [the due date]').",
+            part: "Part 5",
+            tags: "Vocabulary, Library"
+        },
+        {
+            id: "q013",
+            questionText: "13. We felt that the recent reports were not particularly ________ .",
+            options: ["A. informs.", "B. information.", "C. informative.", "D. inform"],
+            correctAnswer: "C. informative.",
+            explanation: "Setelah kata 'were not particularly' dibutuhkan kata sifat (adjective). 'Informative' (bersifat memberi informasi/bermanfaat) adalah adjective yang tepat.",
+            part: "Part 5",
+            tags: "Grammar, Adjective, Suffix"
+        },
+        {
+            id: "q014",
+            questionText: "14. The slow ________ on this project has been a cause for concern.",
+            options: ["A. progress", "B. progressed", "C. progressive", "D. progresses"],
+            correctAnswer: "A. progress",
+            explanation: "Setelah determiners 'The slow' dibutuhkan kata benda (noun) yaitu 'progress' (kemajuan).",
+            part: "Part 5",
+            tags: "Grammar, Noun, Management"
+        },
+        {
+            id: "q015",
+            questionText: "15. After you have had a chance to look over the enclosed documents, please return ________ to the front office.",
+            options: ["A. they", "B. them", "C. their", "D. theirs"],
+            correctAnswer: "B. them",
+            explanation: "Dibutuhkan kata ganti objek (object pronoun) untuk merujuk pada kata benda jamak 'documents' yaitu 'them'.",
+            part: "Part 5",
+            tags: "Grammar, Pronoun, Object"
+        },
+        {
+            id: "q016",
+            questionText: "16. Due to the ________ weathers conditions, all flights have been postponed until further notice.",
+            options: ["A. current", "B. abundant", "C. actual", "D. eventual"],
+            correctAnswer: "A. current",
+            explanation: "Kata 'current' (saat ini) menerangkan kondisi cuaca yang sedang berlangsung sekarang.",
+            part: "Part 5",
+            tags: "Vocabulary, Adjective, Weather"
+        },
+        {
+            id: "q017",
+            questionText: "17. We need all the help we can get and would like everyone in the office to ________ us in greeting this job completed on time.",
+            options: ["A. resist", "B. desist", "C. insist", "D. assist"],
+            correctAnswer: "D. assist",
+            explanation: "Kata 'assist' (membantu/menolong) paling tepat sesuai konteks kalimat meminta bantuan seluruh staf di kantor.",
+            part: "Part 5",
+            tags: "Vocabulary, Verb, Office"
+        },
+        {
+            id: "q018",
+            questionText: "18. The new computer does not seem to work ________ the old one did.",
+            options: ["A. as well", "B. as well than", "C. as good as", "D. as well as"],
+            correctAnswer: "D. as well as",
+            explanation: "Perbandingan setara menggunakan pola 'as + adverb/adjective + as'. Karena memodifikasi kata kerja 'work', kita menggunakan adverb 'well' -> 'as well as'.",
+            part: "Part 5",
+            tags: "Grammar, Comparison, Adverb"
+        },
+        {
+            id: "q019",
+            questionText: "19. ________ have market conditions been as favorable as they are now.",
+            options: ["A. Reliably", "B. Fortunately", "C. Never", "D. Usually"],
+            correctAnswer: "C. Never",
+            explanation: "Struktur kalimat menggunakan inversi (Verb mendahului Subjek: 'have market conditions been'). Kata negatif seperti 'Never' memicu pola inversi ini.",
+            part: "Part 5",
+            tags: "Grammar, Inversion, Negation"
+        },
+        {
+            id: "q020",
+            questionText: "20. Most ________ the people who responded to the survey were pleased with the new product.",
+            options: ["A. of", "B. for", "C. to", "D. from"],
+            correctAnswer: "A. of",
+            explanation: "Frasa kuantifikasi standar sebelum determiner/noun adalah 'Most of the people...'.",
+            part: "Part 5",
+            tags: "Preposition, Quantifier"
+        },
+        {
+            id: "q021",
+            questionText: "21. Fill out this form ________ before turning it in to your supervisor.",
+            options: ["A. completed", "B. complete", "C. completion", "D. completely"],
+            correctAnswer: "D. completely",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'completely' (secara lengkap) untuk menerangkan frasa kerja 'Fill out'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb, Form"
+        },
+        {
+            id: "q022",
+            questionText: "22. All new staff members should become ________ with the standard office.",
+            options: ["A. family", "B. familiar", "C. familiarly", "D. familiarize"],
+            correctAnswer: "B. familiar",
+            explanation: "Frasa 'become familiar with' adalah ekspresi standar yang berarti 'menjadi akrab/terbiasa dengan'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective, Idiom"
+        },
+        {
+            id: "q023",
+            questionText: "23. The recent changes in the economy have led to grater ________ in our company's.",
+            options: ["A. interest", "B. interesting", "C. interested", "D. interestingly"],
+            correctAnswer: "A. interest",
+            explanation: "Setelah adjective 'greater' (ditulis 'grater' di soal asli) dibutuhkan kata benda (noun) yaitu 'interest' (ketertarikan/minat).",
+            part: "Part 5",
+            tags: "Grammar, Noun, Economy"
+        },
+        {
+            id: "q024",
+            questionText: "24. Weather conditions ________ the region have had a negative impact on agricultural production.",
+            options: ["A. whole", "B. during", "C. throughout", "D. entire"],
+            correctAnswer: "C. throughout",
+            explanation: "Preposisi 'throughout' berarti 'di seluruh' (di seluruh wilayah/region) dan sangat tepat secara spasial di sini.",
+            part: "Part 5",
+            tags: "Preposition, Geography"
+        },
+        {
+            id: "q025",
+            questionText: "25. While we understand the desire to save money, we usually advise ________ choosing an insurance plan merely because it has the lowest price.",
+            options: ["A. for", "B. from", "C. against", "D. over"],
+            correctAnswer: "C. against",
+            explanation: "Kata kerja 'advise' dipasangkan dengan 'against' (advise against doing something) untuk menasihati seseorang agar TIDAK melakukan sesuatu.",
+            part: "Part 5",
+            tags: "Vocabulary, Preposition, Advice"
+        },
+        {
+            id: "q026",
+            questionText: "26. Please call the travel agent this afternoon to ________ your travel plans.",
+            options: ["A. confirmation", "B. confirm", "C. confirmed", "D. confirming"],
+            correctAnswer: "B. confirm",
+            explanation: "Setelah penanda to-infinitive ('to') dibutuhkan kata kerja bentuk dasar (Verb 1) yaitu 'confirm'.",
+            part: "Part 5",
+            tags: "Grammar, Verb, Infinitive"
+        },
+        {
+            id: "q027",
+            questionText: "27. The manager has asked that all vacation requests be handed in to ________ office by 9:00 on Monday morning.",
+            options: ["A. she's", "B. her", "C. she", "D. hers"],
+            correctAnswer: "B. her",
+            explanation: "Dibutuhkan possessive adjective 'her' sebelum kata benda 'office' untuk menerangkan kepemilikan kantor milik sang manajer.",
+            part: "Part 5",
+            tags: "Grammar, Pronoun, Possessive"
+        },
+        {
+            id: "q028",
+            questionText: "28. ________ for improvements in current economic conditions have been met with nothing but disappointment.",
+            options: ["A. Expectations", "B. Experiences", "C. Experiments", "D. Expressions"],
+            correctAnswer: "A. Expectations",
+            explanation: "'Expectations for...' (harapan akan perbaikan) sangat sesuai secara makna (vocabulary) dengan sisa kalimat yang bermakna kekecewaan.",
+            part: "Part 5",
+            tags: "Vocabulary, Noun, Economy"
+        },
+        {
+            id: "q029",
+            questionText: "29. Any personal items left in the lockers will be ________ at the end of the month.",
+            options: ["A. reminded", "B. remarked", "C. remodeled", "D. removed"],
+            correctAnswer: "D. removed",
+            explanation: "Kata 'removed' (disingkirkan/dibersihkan/dihapus) adalah kata kerja pasif paling pas untuk barang pribadi yang tertinggal di loker.",
+            part: "Part 5",
+            tags: "Vocabulary, Verb, Passive"
+        },
+        {
+            id: "q030",
+            questionText: "30. The director would like to express his appreciation for the ________ efforts made by all members of the staff during this time of crisis.",
+            options: ["A. admirable", "B. admired", "C. admirably", "D. admiral"],
+            correctAnswer: "A. admirable",
+            explanation: "Dibutuhkan kata sifat (adjective) 'admirable' (yang patut dipuji) sebelum kata benda 'efforts'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective, Appreciation"
+        },
+        {
+            id: "q031",
+            questionText: "31. The person to ________ you submitted your request is no longer in charge of this section.",
+            options: ["A. whom", "B. which", "C. who", "D. where"],
+            correctAnswer: "A. whom",
+            explanation: "Setelah preposisi 'to', relative pronoun yang digunakan untuk merujuk pada manusia (person) sebagai objek adalah 'whom'.",
+            part: "Part 5",
+            tags: "Grammar, Pronoun, Relative"
+        },
+        {
+            id: "q032",
+            questionText: "32. We would be very interested in hearing your ________ of the current political crisis.",
+            options: ["A. reaction", "B. mind", "C. reason", "D. opinion"],
+            correctAnswer: "D. opinion",
+            explanation: "Kata 'opinion' (pendapat/opini) adalah kata benda yang paling tepat untuk mendengarkan pandangan seseorang mengenai krisis politik.",
+            part: "Part 5",
+            tags: "Vocabulary, Noun, Politics"
+        },
+        {
+            id: "q033",
+            questionText: "33. While negative criticism is rarely appreciated, ________ advice is always welcome.",
+            options: ["A. constructive", "B. construction", "C. construct", "D. constructing"],
+            correctAnswer: "A. constructive",
+            explanation: "Dibutuhkan kata sifat (adjective) 'constructive' (bersifat membangun) untuk menerangkan kata benda 'advice'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective, Advice"
+        },
+        {
+            id: "q034",
+            questionText: "34. We hope that you will ________ all of the evidence before making your final decision in this matter.",
+            options: ["A. confuse", "B. convince", "C. consider", "D. concur"],
+            correctAnswer: "C. consider",
+            explanation: "Kata 'consider' (mempertimbangkan) adalah tindakan logis yang diambil terhadap 'all of the evidence' (semua bukti) sebelum membuat keputusan.",
+            part: "Part 5",
+            tags: "Vocabulary, Verb, Decision"
+        },
+        {
+            id: "q035",
+            questionText: "35. Mr. Change will serve as ________ director until a permanent director can be found.",
+            options: ["A. act", "B. acting", "C. actor", "D. acted"],
+            correctAnswer: "B. acting",
+            explanation: "Frasa 'acting director' (direktur pelaksana/sementara) adalah istilah formal dalam kepemimpinan organisasi.",
+            part: "Part 5",
+            tags: "Noun Modifier, Business"
+        },
+        {
+            id: "q036",
+            questionText: "36. It is important to respond to customer complaints with as pleasant an ________ as possible.",
+            options: ["A. assertion", "B. attitude", "C. assignment", "D. attendant"],
+            correctAnswer: "B. attitude",
+            explanation: "Menanggapi komplain pelanggan membutuhkan 'attitude' (sikap/perilaku) yang menyenangkan.",
+            part: "Part 5",
+            tags: "Vocabulary, Noun, Customer Service"
+        },
+        {
+            id: "q037",
+            questionText: "37. While it is ________ to know the final results this soon, we have received some preliminary information.",
+            options: ["A. impossible", "B. impatient", "C. improper", "D. impolite"],
+            correctAnswer: "A. impossible",
+            explanation: "Kata 'impossible' (mustahil) menunjukkan kontras dengan 'preliminary information' (informasi awal).",
+            part: "Part 5",
+            tags: "Vocabulary, Adjective, Contrast"
+        },
+        {
+            id: "q038",
+            questionText: "38. Our team worked ________ hard on that project that we finished it two days before the deadline.",
+            options: ["A. too", "B. so", "C. such", "D. a lot"],
+            correctAnswer: "B. so",
+            explanation: "Pola 'so + adjective/adverb + that' digunakan untuk menunjukkan hubungan sebab akibat ('bekerja sangat keras sehingga selesai dua hari lebih awal').",
+            part: "Part 5",
+            tags: "Grammar, Adverb, Conjunction"
+        },
+        {
+            id: "q039",
+            questionText: "39. ________ can be the cause of many work delays.",
+            options: ["A. Careless", "B. Cared", "C. Carelessness", "D. Carelessly"],
+            correctAnswer: "C. Carelessness",
+            explanation: "Dibutuhkan kata benda (noun) 'Carelessness' (keteledoran/kelalaian) untuk bertindak sebagai subjek kalimat.",
+            part: "Part 5",
+            tags: "Grammar, Noun, Management"
+        },
+        {
+            id: "q040",
+            questionText: "40. ________ the growing demand for our product, we are making plans to increase production.",
+            options: ["A. Although", "B. In spite of", "C. Because of", "D. Consequently"],
+            correctAnswer: "C. Because of",
+            explanation: "Dibutuhkan preposisi kasual 'Because of' (karena) yang diikuti oleh noun phrase 'the growing demand' untuk menerangkan alasan menaikkan produksi.",
+            part: "Part 5",
+            tags: "Grammar, Preposition, Cause"
+        },
+        {
+            id: "q041",
+            questionText: "41. [Text Completion Option] We are delighted to host the upcoming art ------- this weekend.",
+            options: ["A. exhibit", "B. lecture", "C. auction", "D. purchase"],
+            correctAnswer: "A. exhibit",
+            explanation: "Konteks pameran seni menggunakan istilah 'art exhibit'.",
+            part: "Part 6",
+            tags: "Text Completion, Vocabulary"
+        },
+        {
+            id: "q042",
+            questionText: "42. [Text Completion Option] The response to the call for volunteers was ------- surprise to us.",
+            options: ["A. very", "B. such a", "C. so that", "D. enough"],
+            correctAnswer: "B. such a",
+            explanation: "Pola 'such a + singular countable noun' cocok untuk 'such a surprise'.",
+            part: "Part 6",
+            tags: "Text Completion, Grammar"
+        },
+        {
+            id: "q043",
+            questionText: "43. [Text Completion Option] Please ensure you secure your admission ------- before the event date.",
+            options: ["A. Guides", "B. Tickets", "C. Brochures", "D. Schedules"],
+            correctAnswer: "B. Tickets",
+            explanation: "Kata 'admission tickets' (tiket masuk) adalah kombinasi umum dalam pendaftaran acara.",
+            part: "Part 6",
+            tags: "Text Completion, Vocabulary"
+        },
+        {
+            id: "q044",
+            questionText: "44. [Text Completion Option] If there are changes, we ------- you a notification.",
+            options: ["A. send", "B. sent", "C. will send", "D. might send"],
+            correctAnswer: "D. might send",
+            explanation: "Penggunaan 'might send' menunjukkan probabilitas bersyarat (conditional) yang sopan.",
+            part: "Part 6",
+            tags: "Text Completion, Grammar"
+        },
+        {
+            id: "q045",
+            questionText: "45. [Text Completion Option] Candidates are requested to provide at least one professional -------.",
+            options: ["A. a background", "B. an instruction", "C. a reference", "D. an acceptance"],
+            correctAnswer: "C. a reference",
+            explanation: "Dalam proses lamaran kerja, kandidat melampirkan 'reference' (referensi kerja).",
+            part: "Part 6",
+            tags: "Text Completion, Vocabulary"
+        },
+        {
+            id: "q046",
+            questionText: "46. [Text Completion Option] I am writing to express ------- sincere gratitude for your assistance.",
+            options: ["A. your", "B. his", "C. her", "D. my"],
+            correctAnswer: "D. my",
+            explanation: "Sesuai konteks surat bertanda subjek 'I', kata ganti kepemilikannya adalah 'my sincere gratitude'.",
+            part: "Part 6",
+            tags: "Text Completion, Pronoun"
+        },
+        {
+            id: "q047",
+            questionText: "47. [Text Completion Option] Our team ------- a strong commitment to quality work.",
+            options: ["A. always has shown", "B. always has shows", "C. has always shown", "D. has shown always"],
+            correctAnswer: "C. has always shown",
+            explanation: "Struktur penempatan adverb 'always' yang benar adalah di antara auxiliary verb dan main verb ('has always shown').",
+            part: "Part 6",
+            tags: "Text Completion, Word Order"
+        },
+        {
+            id: "q048",
+            questionText: "48. [Text Completion Option] I am excited to apply for the assistant manager -------.",
+            options: ["A. position", "B. degree", "C. residence", "D. professor"],
+            correctAnswer: "A. position",
+            explanation: "Melamar kerja menggunakan kata 'position' (posisi/jabatan).",
+            part: "Part 6",
+            tags: "Text Completion, Business"
+        },
+        {
+            id: "q049",
+            questionText: "49. [Text Completion Option] We are pleased to offer this service free ------- charge.",
+            options: ["A. of", "B. as", "C. for", "D. if"],
+            correctAnswer: "A. of",
+            explanation: "Frasa idiomatis 'free of charge' berarti gratis atau tanpa biaya.",
+            part: "Part 6",
+            tags: "Text Completion, Preposition"
+        },
+        {
+            id: "q050",
+            questionText: "50. [Text Completion Option] We are happy to accommodate everyone with the ------- of VIP members.",
+            options: ["A. excepts", "B. excepted", "C. exception", "D. excepting"],
+            correctAnswer: "C. exception",
+            explanation: "Frasa pembentuk 'with the exception of' (dengan pengecualian...).",
+            part: "Part 6",
+            tags: "Text Completion, Suffix"
+        },
+        {
+            id: "q051",
+            questionText: "51. [Text Completion Option] To receive your travel expense -------, please attach all original receipts.",
+            options: ["A. bonuses", "B. assistance", "C. supervisors", "D. reimbursement"],
+            correctAnswer: "D. reimbursement",
+            explanation: "Pengembalian uang biaya perjalanan bisnis disebut 'travel expense reimbursement'.",
+            part: "Part 6",
+            tags: "Text Completion, Vocabulary"
+        },
+        {
+            id: "q052",
+            questionText: "52. [Text Completion Option] All requests for ------- must be approved by your supervisor first.",
+            options: ["A. bonuses", "B. assistance", "C. supervisors", "D. reimbursement"],
+            correctAnswer: "D. reimbursement",
+            explanation: "Sama seperti q051, proses pengembalian dana kantor disebut 'reimbursement'.",
+            part: "Part 6",
+            tags: "Text Completion, Finance"
+        },
+        {
+            id: "q053",
+            questionText: "53. What can you do at the job fair?",
+            options: ["A. Learn how to write a resume", "B. Meet potential employers", "C. Attend a conference", "D. Buy things on sale"],
+            correctAnswer: "B. Meet potential employers",
+            explanation: "Job fair (bursa kerja) adalah acara bagi para pencari kerja untuk bertemu langsung dengan calon pemberi kerja (potential employers).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Job Fair"
+        },
+        {
+            id: "q054",
+            questionText: "54. Where will the job fair be held?",
+            options: ["A. In the convention center", "B. On Main Street", "C. On South State Street", "D. At the Chamber of Commerce"],
+            correctAnswer: "A. In the convention center",
+            explanation: "Sesuai dengan informasi brosur pameran karir, lokasi acara ditetapkan di Convention Center gedung utama.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Location"
+        },
+        {
+            id: "q055",
+            questionText: "55. What should you do to call someone in another city?",
+            options: ["A. Call Tourist Information", "B. Call room service", "C. Call City Public Transportation", "D. Call the front desk"],
+            correctAnswer: "D. Call the front desk",
+            explanation: "Berdasarkan panduan direktori telepon hotel, panggilan luar kota / interlokal membutuhkan koneksi atau bantuan melalui resepsionis (front desk).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Hotel"
+        },
+        {
+            id: "q056",
+            questionText: "56. If you dial 9-567-555-1014, what information can you find out?",
+            options: ["A. Which bus to take downtown", "B. Which movies are showing tonight", "C. Where to eat dinner", "D. How to make a local call"],
+            correctAnswer: "A. Which bus to take downtown",
+            explanation: "Berdasarkan direktori layanan kota, nomor tersebut langsung menghubungkan ke Pusat Informasi Transportasi Publik Bus Kota.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Transit"
+        },
+        {
+            id: "q057",
+            questionText: "57. How can you ask someone to clean your room?",
+            options: ["A. Make a long distance call", "B. Dial 3", "C. Call room service", "D. Ask for Tourist Information"],
+            correctAnswer: "B. Dial 3",
+            explanation: "Instruksi telepon kamar hotel menuliskan 'Dial 3' untuk memanggil layanan kebersihan kamar (Housekeeping).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Service"
+        },
+        {
+            id: "q058",
+            questionText: "58. What is the purpose of this letter?",
+            options: ["A. To ask for the customer's opinion", "B. To offer technical support", "C. To sell a new computer", "D. To advertise a website"],
+            correctAnswer: "A. To ask for the customer's opinion",
+            explanation: "Surat survei kepuasan pelanggan dikirim untuk mengumpulkan masukan dan pendapat resmi (customer opinion).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Survey"
+        },
+        {
+            id: "q059",
+            questionText: "59. How can the customer complete the form?",
+            options: ["A. By calling the Customer Support Office", "B. By going online", "C. By contacting Ms. Kim", "D. By writing to Mr. Lee"],
+            correctAnswer: "B. By going online",
+            explanation: "Pelanggan diminta mengunjungi situs resmi perusahaan (online) untuk mengisi data kuesioner.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Technology"
+        },
+        {
+            id: "q060",
+            questionText: "60. Who did the customer speak with?",
+            options: ["A. The support Service Manager", "B. A Technical Support representative", "C. Someone in the Customer Support Office", "D. A New World Computers customer"],
+            correctAnswer: "B. A Technical Support representative",
+            explanation: "Sesuai rincian log kasus, pelanggan dipandu oleh agen bantuan teknis (Technical Support representative).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Agent"
+        },
+        {
+            id: "q061",
+            questionText: "61. What is the purpose of this notice?",
+            options: ["A. To let tenants know that the fire alarm system will be repaired", "B. To tell tenants about a fire that occurred in the building", "C. To warn tenants about the danger of fires", "D. To inform tenants about want to do in case of fire"],
+            correctAnswer: "A. To let tenants know that the fire alarm system will be repaired",
+            explanation: "Pengumuman ditujukan untuk memberi tahu warga gedung bahwa sistem alarm kebakaran akan diperbaiki.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Notice"
+        },
+        {
+            id: "q062",
+            questionText: "62. What should tenants do if they hear the fire alarm during 8:30 and 10:00?",
+            options: ["A. Leave the building immediately", "B. Contact the building superintendent", "C. Continue with their usual activities", "D. Wait patiently for the fire department to arrive"],
+            correctAnswer: "C. Continue with their usual activities",
+            explanation: "Karena periode tersebut merupakan masa pengujian dan pemeliharaan sistem, alarm yang berbunyi dapat diabaikan dan penghuni diminta melanjutkan aktivitas normal.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Instructions"
+        },
+        {
+            id: "q063",
+            questionText: "63. Who is this notice aimed at?",
+            options: ["A. Real estate agents", "B. Home owners", "C. Researchers", "D. Marketing experts"],
+            correctAnswer: "B. Home owners",
+            explanation: "Panduan pemeliharaan eksterior properti dan perpajakan ditargetkan kepada pemilik rumah tinggal (home owners).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Marketing"
+        },
+        {
+            id: "q064",
+            questionText: "64. What kind of event does it advertise?",
+            options: ["A. An estate sale", "B. A party", "C. A lecture", "D. A competition"],
+            correctAnswer: "C. A lecture",
+            explanation: "Brosur ini mempromosikan kegiatan presentasi informasi / perkuliahan umum (lecture).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Presentation"
+        },
+        {
+            id: "q065",
+            questionText: "65. What should you do if you want to attend the event?",
+            options: ["A. Put your house on the market", "B. Send in some money", "C. Call Ms. Ortiz", "D. Make a reservation"],
+            correctAnswer: "D. Make a reservation",
+            explanation: "Keterangan pendaftaran menyatakan kuota terbatas dan mewajibkan setiap hadirin melakukan pemesanan tempat (reservation).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Reservation"
+        },
+        {
+            id: "q066",
+            questionText: "66. Where would you find these instructions?",
+            options: ["A. In a catalog", "B. Enclosed in a package", "C. Hanging up in a post office", "D. At a store"],
+            correctAnswer: "B. Enclosed in a package",
+            explanation: "Panduan garansi, pengembalian barang, dan perakitan biasanya ditaruh di dalam kotak paket barang (enclosed in a package).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Package"
+        },
+        {
+            id: "q067",
+            questionText: "67. The word “condition” in line 6 is closest in meaning to ...",
+            options: ["A. fitness", "B. appearance", "C. state", "D. shipment"],
+            correctAnswer: "C. state",
+            explanation: "Dalam konteks produk fisik, kata 'condition' setara maknanya dengan keadaan fisik produk tersebut (state).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Synonym"
+        },
+        {
+            id: "q068",
+            questionText: "68. What should you do to return a product the day after receiving it?",
+            options: ["A. Repack it and mail it back", "B. Wait for thirty days", "C. Call the customer service office", "D. Order a new catalog"],
+            correctAnswer: "A. Repack it and mail it back",
+            explanation: "Kebijakan retur tertulis menyuruh pembeli mengemas kembali produk secara rapi dan mengirimkannya balik lewat kurir pos.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Policy"
+        },
+        {
+            id: "q069",
+            questionText: "69. What will happen if you return a product before thirty days have passed?",
+            options: ["A. The company will ask you same questions", "B. A customer service representative will call you", "C. You will get all your money back", "D. You will have to send in a new purchase order."],
+            correctAnswer: "C. You will get all your money back",
+            explanation: "Klausul jaminan kepuasan menjamin pengembalian dana 100% penuh tanpa potongan (all money back) jika diretur sebelum 30 hari.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Refund"
+        },
+        {
+            id: "q070",
+            questionText: "70. When should Mr. and Mrs. Thomas tell the hotel if they want to change their room reservation?",
+            options: ["A. As soon as they arrive at the hotel", "B. When the tour leader arrives at the hotel", "C. Before they arrive at the hotel", "D. After all the tour participants have arrived at the hotel"],
+            correctAnswer: "C. Before they arrive at the hotel",
+            explanation: "Koreksi tipe kamar hotel wajib diajukan paling lambat H-3 sebelum tanggal kedatangan (before they arrive).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Travel"
+        },
+        {
+            id: "q071",
+            questionText: "71. When will Mr. and Mrs. Thomas find out the complete tour schedule?",
+            options: ["A. It is enclosed with the letter", "B. During dinner at the hotel restaurant", "C. When they check in at the hotel", "D. They already know it"],
+            correctAnswer: "B. During dinner at the hotel restaurant",
+            explanation: "Surat menyuratkan bahwa penjelasan seluruh jadwal acara perjalanan akan dijabarkan saat makan malam bersama di restoran hotel.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Schedule"
+        },
+        {
+            id: "q072",
+            questionText: "72. The word “distributed” in paragraph 2, line 4, is closest in meaning to ...",
+            options: ["A. disturbed", "B. revised", "C. itemized", "D. sent around"],
+            correctAnswer: "D. sent around",
+            explanation: "Kata 'distributed' dalam konteks membagikan selebaran dokumen berarti dikirimkan berkeliling ke penerima (sent around).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Vocabulary"
+        },
+        {
+            id: "q073",
+            questionText: "73. Who wrote the letter?",
+            options: ["A. A tour participant", "B. A travel agency employee", "C. A hotel employee", "D. The tour leader"],
+            correctAnswer: "B. A travel agency employee",
+            explanation: "Konfirmasi perjalanan dengan kop surat wisata dikirim oleh perwakilan dari kantor agen travel perjalanan.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Travel Agency"
+        },
+        {
+            id: "q074",
+            questionText: "74. Who must attend the seminar?",
+            options: ["A. All personnel", "B. Everybody in the Finance Office", "C. Anybody who wants to", "D. People contacted by Mr. Oh"],
+            correctAnswer: "B. Everybody in the Finance Office",
+            explanation: "Memo departemen menetapkan pelatihan sistem keuangan bersifat wajib untuk semua staf akunting dan keuangan (Finance Office).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Finance Office"
+        },
+        {
+            id: "q075",
+            questionText: "75. Where will the seminar take place?",
+            options: ["A. At the Intelligent Software Design Company", "B. In the Human Resources Office", "C. In Conference Room B", "D. In the Finance Office"],
+            correctAnswer: "C. In Conference Room B",
+            explanation: "Sesuai rincian lokasi dalam undangan rapat, acara akan dilangsungkan di Ruang Konferensi B.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Meeting"
+        },
+        {
+            id: "q076",
+            questionText: "76. Why won't Mr. James speak tonight?",
+            options: ["A. He's busy working", "B. It's inconvenient for him", "C. The auditorium is closed for repairs", "D. The weather is too hot"],
+            correctAnswer: "C. The auditorium is closed for repairs",
+            explanation: "Presenter batal tampil karena keadaan darurat bahwa ruang auditorium utama ditutup sementara untuk renovasi atap.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Announcement"
+        },
+        {
+            id: "q077",
+            questionText: "77. What will happen next Monday?",
+            options: ["A. The auditorium will close at 8:00 P.M.", "B. There will be a new talk", "C. Mr. James will return to the auditorium", "D. There will be a class about writing resumes"],
+            correctAnswer: "B. There will be a new talk",
+            explanation: "Jadwal revisi menunjukkan sesi presentasi susulan baru akan diselenggarakan pada hari senin malam depan.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Schedule"
+        },
+        {
+            id: "q082",
+            questionText: "82. What kind of computer program does Lu Wang know how to use?",
+            options: ["A. E-mail", "B. Web browser", "C. Word processing", "D. Architectural software"],
+            correctAnswer: "C. Word processing",
+            explanation: "Dalam riwayat hidupnya, Lu Wang menyebutkan mahir menjalankan software pengetikan dokumen perkantoran (Word processing).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Resume"
+        },
+        {
+            id: "q083",
+            questionText: "83. What kind of job does Lu Wang want in the future?",
+            options: ["A. Architect", "B. High school teacher", "C. University professor", "D. Computer programmer"],
+            correctAnswer: "A. Architect",
+            explanation: "Dalam surat minat karirnya, ia menargetkan posisi arsitek profesional sebagai tujuan utamanya.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Career"
+        },
+        {
+            id: "q084",
+            questionText: "84. What is Lu Wang doing now?",
+            options: ["A. Studying in high school", "B. Taking a university class", "C. Seeking a job as an architect", "D. Working as an office assistant"],
+            correctAnswer: "B. Taking a university class",
+            explanation: "Lu Wang merupakan mahasiswa aktif semester akhir yang sedang menempuh perkuliahan universitas.",
+            part: "Part 7",
+            tags: "Reading Comprehension, University"
+        },
+        {
+            id: "q085",
+            questionText: "85. What has Lu Wang enclosed with her letter?",
+            options: ["A. Her resume", "B. Her schedule", "C. Her high school record", "D. Her university's catalog"],
+            correctAnswer: "A. Her resume",
+            explanation: "Lampiran surat pengantar lamaran magang Lu Wang berisi lembar resume riwayat hidup lengkap.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Document"
+        },
+        {
+            id: "q086",
+            questionText: "86. Who was the party for?",
+            options: ["A. Tom", "B. Ted", "C. Susan", "D. Martha"],
+            correctAnswer: "D. Martha",
+            explanation: "Acara pesta makan malam perpisahan ini digelar sebagai apresiasi bagi Martha.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Event"
+        },
+        {
+            id: "q087",
+            questionText: "87. When did Tom write the e-mail?",
+            options: ["A. Tuesday", "B. Wednesday", "C. Thursday", "D. Friday"],
+            correctAnswer: "D. Friday",
+            explanation: "Pojok kanan pesan e-mail Tom bertuliskan tanggal pengiriman hari Jumat pagi.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Time"
+        },
+        {
+            id: "q088",
+            questionText: "88. Why couldn't Tom attend the party?",
+            options: ["A. He had an emergency.", "B. He had made other plans", "C. He had to attend a meeting", "D. He had to work on the accounts"],
+            correctAnswer: "A. He had an emergency.",
+            explanation: "Pesan tertulis menerangkan bahwa Tom mengalami musibah darurat tak terduga di kediamannya.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Emergency"
+        },
+        {
+            id: "q090",
+            questionText: "90. What did Tom send to the party?",
+            options: ["A. Money", "B. A Card", "C. Food", "D. A gift"],
+            correctAnswer: "C. Food",
+            explanation: "Sebagai wujud partisipasi, Tom memesan dan mengirim paket makanan prasmanan ke lokasi pesta.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Catering"
+        },
+        {
+            id: "q091",
+            questionText: "91. What form of payment is NOT accepted by the dental office?",
+            options: ["A. Cash", "B. Check", "C. Credit Card", "D. Money Order"],
+            correctAnswer: "A. Cash",
+            explanation: "Klinik gigi mengumumkan tidak menerima transaksi tunai (Cash) untuk meminimalkan risiko keamanan.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Payment"
+        },
+        {
+            id: "q092",
+            questionText: "92. If a patient has an emergency on Saturday morning, what number should he call?",
+            options: ["A. 555-9754", "B. 555-4825", "C. 555-8977", "D. 555-6295"],
+            correctAnswer: "A. 555-9754",
+            explanation: "Kontak darurat darurat klinik di luar jam operasional kerja adalah nomor 555-9754.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Medical"
+        },
+        {
+            id: "q093",
+            questionText: "93. How much will Jim Wilson pay for his appointment today?",
+            options: ["A. $24", "B. $40", "C. $240", "D. $400"],
+            correctAnswer: "B. $40",
+            explanation: "Jim Wilson membayar tagihan asuransi dasar sebesar $40 pada kunjungan dokter gigi hari ini.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Billing"
+        },
+        {
+            id: "q094",
+            questionText: "94. What will Jim Wilson do this afternoon?",
+            options: ["A. Go to the dentist", "B. Attend a meeting", "C. Call for an appointment", "D. Send a check to his assistant"],
+            correctAnswer: "B. Attend a meeting",
+            explanation: "Jadwal siang Jim setelah berobat adalah memimpin rapat evaluasi (attend a meeting).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Schedule"
+        },
+        {
+            id: "q095",
+            questionText: "95. What day of the week will Jim Wilson's next appointment be?",
+            options: ["A. Monday", "B. Tuesday", "C. Thursday", "D. Friday"],
+            correctAnswer: "D. Friday",
+            explanation: "Resepsionis menjadwalkan pemeriksaan gigi berulang pada hari Jumat berikutnya.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Dentist"
+        },
+        {
+            id: "q096",
+            questionText: "96. What is Pamela Lopez's job?",
+            options: ["A. Secretary", "B. Hotel clerk", "C. Travel agent", "D. Airline ticket agent"],
+            correctAnswer: "C. Travel agent",
+            explanation: "Pamela Lopez melayani pemesanan rute penerbangan dan hotel sebagai agen pariwisata (Travel agent).",
+            part: "Part 7",
+            tags: "Reading Comprehension, Tourism"
+        },
+        {
+            id: "q097",
+            questionText: "97. What time did Pamela Lopez call Harry Pak?",
+            options: ["A. 3:00", "B. 8:30", "C. 11:15", "D. 12:30"],
+            correctAnswer: "C. 11:15",
+            explanation: "Pencatatan aktivitas sekretaris menuliskan panggilan masuk dari Pamela terjadi pada pukul 11:15.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Time Log"
+        },
+        {
+            id: "q098",
+            questionText: "98. When does Harry Pak want to start his trip?",
+            options: ["A. Monday evening", "B. Tuesday morning", "C. Tuesday afternoon", "D. Wednesday morning"],
+            correctAnswer: "D. Wednesday morning",
+            explanation: "Harry Pak meminta dicarikan opsi jadwal keberangkatan di hari Rabu pagi.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Departure"
+        },
+        {
+            id: "q099",
+            questionText: "99. Which hotel does Harry Pak want to stay at?",
+            options: ["A. The Grand Hotel", "B. The Marionette Hotel", "C. The Riverside Hotel", "D. The One World Hotel"],
+            correctAnswer: "A. The Grand Hotel",
+            explanation: "Harry Pak menginstruksikan pemesanan kamar eksekutif di Grand Hotel.",
+            part: "Part 7",
+            tags: "Reading Comprehension, Hotel"
+        },
         {
             id: "q101",
             questionText: "101. Ms. Jamilah requested a ------- of her hotel reservation to accommodate her new travel dates.",
@@ -179,8 +1025,7 @@
             correctAnswer: "A. modification",
             explanation: "Setelah artikel 'a' diperlukan kata benda (noun). 'Modification' adalah bentuk kata benda yang tepat.",
             part: "Part 5",
-            tags: "Grammar, Noun",
-            imageBase64: ""
+            tags: "Grammar, Noun, Business"
         },
         {
             id: "q102",
@@ -189,8 +1034,7 @@
             correctAnswer: "C. at",
             explanation: "Preposisi tempat 'at' digunakan untuk merujuk ke suatu acara atau lokasi spesifik (at the international conference).",
             part: "Part 5",
-            tags: "Preposition",
-            imageBase64: ""
+            tags: "Preposition, Location"
         },
         {
             id: "q103",
@@ -199,8 +1043,7 @@
             correctAnswer: "D. significantly",
             explanation: "Dibutuhkan kata keterangan (adverb) 'significantly' untuk menerangkan kata kerja 'increase'.",
             part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
+            tags: "Grammar, Adverb, Modifier"
         },
         {
             id: "q104",
@@ -209,8 +1052,7 @@
             correctAnswer: "A. within",
             explanation: "Preposisi 'within' tepat dipasangkan dengan tenggat waktu 'five business days' (dalam waktu lima hari kerja).",
             part: "Part 5",
-            tags: "Preposition",
-            imageBase64: ""
+            tags: "Preposition, Finance"
         },
         {
             id: "q105",
@@ -219,258 +1061,7 @@
             correctAnswer: "B. updated",
             explanation: "Dibutuhkan kata sifat (adjective) berbentuk past participle 'updated' untuk merujuk pada 'version' (versi yang diperbarui).",
             part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q106",
-            questionText: "106. The newly appointed CEO is known for her ------- approach to resolving internal conflicts.",
-            options: ["A. collaboration", "B. collaborate", "C. collaborative", "D. collaboratively"],
-            correctAnswer: "C. collaborative",
-            explanation: "Dibutuhkan kata sifat (adjective) 'collaborative' untuk menerangkan kata benda 'approach'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q107",
-            questionText: "107. The accounting department will conduct a ------- review of all financial statements next month.",
-            options: ["A. thorough", "B. thoroughly", "C. thoroughness", "D. more thoroughly"],
-            correctAnswer: "A. thorough",
-            explanation: "Dibutuhkan kata sifat (adjective) 'thorough' (menyeluruh/mendalam) untuk menerangkan kata benda 'review'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q108",
-            questionText: "108. The IT department resolved the software issue as ------- as possible to minimize company downtime.",
-            options: ["A. quick", "B. quickly", "C. quickness", "D. quicker"],
-            correctAnswer: "B. quickly",
-            explanation: "Frasa 'as ... as possible' membutuhkan kata keterangan (adverb) 'quickly' untuk menerangkan cara penyelesaian kata kerja 'resolved'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q109",
-            questionText: "109. High demand for the new smartphone model led to a ------- shortage in retail stores nationwide.",
-            options: ["A. temporary", "B. temporarily", "C. temporariness", "D. temporize"],
-            correctAnswer: "A. temporary",
-            explanation: "Dibutuhkan kata sifat (adjective) 'temporary' (sementara) untuk menerangkan kata benda 'shortage'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q110",
-            questionText: "110. Under the terms of the agreement, both parties must ------- notify the other of any changes.",
-            options: ["A. prompt", "B. promptly", "C. promptness", "D. prompter"],
-            correctAnswer: "B. promptly",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'promptly' (dengan segera) untuk memodifikasi kata kerja 'notify'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q111",
-            questionText: "111. The committee members were ------- by the speaker's presentation on sustainable agriculture.",
-            options: ["A. impress", "B. impressed", "C. impressive", "D. impression"],
-            correctAnswer: "B. impressed",
-            explanation: "Kalimat berbentuk pasif 'were ------- by' membutuhkan past participle (Verb 3) berfungsi sebagai kata sifat pasif, yaitu 'impressed' (terkesan).",
-            part: "Part 5",
-            tags: "Grammar, Verb",
-            imageBase64: ""
-        },
-        {
-            id: "q112",
-            questionText: "112. Mr. Henderson's promotion to regional director was ------- announced at yesterday's staff meeting.",
-            options: ["A. official", "B. officially", "C. officialize", "D. officials"],
-            correctAnswer: "B. officially",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'officially' (secara resmi) untuk menerangkan kata kerja pasif 'was announced'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q113",
-            questionText: "113. The new software program will allow employees to work more ------- and reduce administrative errors.",
-            options: ["A. efficient", "B. efficiently", "C. efficiency", "D. efficiencies"],
-            correctAnswer: "B. efficiently",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'efficiently' (dengan efisien) untuk menerangkan kata kerja 'work'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q114",
-            questionText: "114. Despite the high cost of raw materials, the company ------- to maintain its current pricing structure.",
-            options: ["A. manage", "B. managing", "C. managed", "D. manageable"],
-            correctAnswer: "C. managed",
-            explanation: "Kalimat menunjukkan tindakan di masa lalu atau fakta lengkap yang membutuhkan kata kerja berkonjugasi (past tense), yaitu 'managed'.",
-            part: "Part 5",
-            tags: "Grammar, Verb",
-            imageBase64: ""
-        },
-        {
-            id: "q115",
-            questionText: "115. Ms. Patel is highly recommended for the position because of her ------- experience in international trade law.",
-            options: ["A. extensive", "B. extensively", "C. extension", "D. extend"],
-            correctAnswer: "A. extensive",
-            explanation: "Dibutuhkan kata sifat (adjective) 'extensive' (luas/banyak) untuk menerangkan kata benda 'experience'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q116",
-            questionText: "116. The construction of the new office building is expected to be completed ------- the end of the year.",
-            options: ["A. by", "B. on", "C. in", "D. of"],
-            correctAnswer: "A. by",
-            explanation: "Preposisi waktu 'by' (menjelang/paling lambat) tepat digunakan untuk menyatakan batas akhir waktu (by the end of the year).",
-            part: "Part 5",
-            tags: "Preposition",
-            imageBase64: ""
-        },
-        {
-            id: "q117",
-            questionText: "117. Customers who purchase a premium membership will receive ------- shipping on all online orders.",
-            options: ["A. complimentary", "B. compliment", "C. complimented", "D. complimenting"],
-            correctAnswer: "A. complimentary",
-            explanation: "Dibutuhkan kata sifat (adjective) 'complimentary' (gratis) untuk menerangkan kata benda 'shipping'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q118",
-            questionText: "118. The HR director will ------- all applications to select the most qualified candidates for interviews.",
-            options: ["A. review", "B. reviewer", "C. reviewed", "D. reviewing"],
-            correctAnswer: "A. review",
-            explanation: "Setelah modal verb 'will' harus diikuti oleh kata kerja bentuk pertama/dasar (bare infinitive), yaitu 'review'.",
-            part: "Part 5",
-            tags: "Grammar, Verb",
-            imageBase64: ""
-        },
-        {
-            id: "q119",
-            questionText: "119. To ensure safety, all lab technicians must wear ------- clothing when handling hazardous chemicals.",
-            options: ["A. protect", "B. protective", "C. protection", "D. protects"],
-            correctAnswer: "B. protective",
-            explanation: "Dibutuhkan kata sifat (adjective) 'protective' (pelindung) untuk menerangkan kata benda 'clothing'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q120",
-            questionText: "120. Mr. Kim decided to hire a consultant to ------- with the implementation of the new database system.",
-            options: ["A. assist", "B. assistance", "C. assistant", "D. assisted"],
-            correctAnswer: "A. assist",
-            explanation: "Setelah infinitif 'to' diperlukan kata kerja dasar (Verb 1), yaitu 'assist' yang dipasangkan dengan preposisi 'with' (membantu proses...).",
-            part: "Part 5",
-            tags: "Grammar, Verb",
-            imageBase64: ""
-        },
-        {
-            id: "q121",
-            questionText: "121. Regular maintenance of the office equipment is essential to prevent ------- breakdowns and costly repairs.",
-            options: ["A. frequent", "B. frequently", "C. frequency", "D. frequenting"],
-            correctAnswer: "A. frequent",
-            explanation: "Dibutuhkan kata sifat (adjective) 'frequent' (sering terjadi) untuk menerangkan kata benda 'breakdowns'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q122",
-            questionText: "122. The board of directors ------- approved the proposed merger after a lengthy discussion.",
-            options: ["A. unanimous", "B. unanimously", "C. unanimity", "D. unanimousness"],
-            correctAnswer: "B. unanimously",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'unanimously' (secara bulat/sepakat) untuk menerangkan kata kerja 'approved'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q123",
-            questionText: "123. The manager requested a ------- report on the project's progress by Friday afternoon.",
-            options: ["A. detail", "B. detailed", "C. detailing", "D. details"],
-            correctAnswer: "B. detailed",
-            explanation: "Dibutuhkan kata sifat (adjective) berupa past participle 'detailed' (yang mendetail/rinci) untuk menerangkan kata benda 'report'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q124",
-            questionText: "124. Employees who are ------- in the leadership program will attend a seminar next week.",
-            options: ["A. enroll", "B. enrolling", "C. enrolled", "D. enrollment"],
-            correctAnswer: "C. enrolled",
-            explanation: "Konstruksi pasif 'are ------- in' (terdaftar di) membutuhkan past participle 'enrolled'.",
-            part: "Part 5",
-            tags: "Grammar, Verb",
-            imageBase64: ""
-        },
-        {
-            id: "q125",
-            questionText: "125. The company's financial performance has improved ------- since the implementation of the new strategy.",
-            options: ["A. steady", "B. steadily", "C. steadiness", "D. steadied"],
-            correctAnswer: "B. steadily",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'steadily' (secara stabil) untuk menerangkan kata kerja 'has improved'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q126",
-            questionText: "126. The new marketing campaign is designed to target a ------- audience than previous ones.",
-            options: ["A. broad", "B. broader", "C. broadly", "D. breadth"],
-            correctAnswer: "B. broader",
-            explanation: "Kata penanda 'than' menunjukkan tingkat perbandingan (comparative), sehingga kata sifat yang tepat adalah 'broader' (lebih luas).",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q127",
-            questionText: "127. Please ensure that all client files are stored ------- in the filing cabinet.",
-            options: ["A. secure", "B. securely", "C. security", "D. securing"],
-            correctAnswer: "B. securely",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'securely' (secara aman) untuk menerangkan kata kerja pasif 'are stored'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q128",
-            questionText: "128. The workshop is designed to help managers ------- communicate their expectations to team members.",
-            options: ["A. effective", "B. effectively", "C. effectiveness", "D. effect"],
-            correctAnswer: "B. effectively",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'effectively' (secara efektif) untuk menerangkan kata kerja 'communicate'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
-        },
-        {
-            id: "q129",
-            questionText: "129. The budget committee will meet tomorrow to discuss the ------- allocation of resources.",
-            options: ["A. propose", "B. proposed", "C. proposing", "D. proposal"],
-            correctAnswer: "B. proposed",
-            explanation: "Dibutuhkan kata sifat (adjective) berbentuk past participle 'proposed' (yang diusulkan) untuk menerangkan kata benda 'allocation'.",
-            part: "Part 5",
-            tags: "Grammar, Adjective",
-            imageBase64: ""
-        },
-        {
-            id: "q130",
-            questionText: "130. The legal department must review the contract ------- before it is signed by the president.",
-            options: ["A. care", "B. careful", "C. carefully", "D. carefulness"],
-            correctAnswer: "C. carefully",
-            explanation: "Dibutuhkan kata keterangan (adverb) 'carefully' (dengan teliti/hati-hati) untuk menerangkan kata kerja 'review'.",
-            part: "Part 5",
-            tags: "Grammar, Adverb",
-            imageBase64: ""
+            tags: "Grammar, Adjective, Quality"
         }
     ];
 
@@ -611,7 +1202,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
                     </span>
-                    <input type="text" id="global-search-input" placeholder="Ketik kata kunci atau penggalan soal di sini... (Contoh: committee members, Jamilah)" 
+                    <input type="text" id="global-search-input" placeholder="Ketik kata kunci atau penggalan soal di sini... (Contoh: Customer satisfaction, attitude)" 
                            class="w-full theme-input border rounded-lg pl-10 pr-12 py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                            onkeyup="handleSearchChange()">
                     
@@ -1086,9 +1677,16 @@
     function loadQuestionsFromStorage() {
         const raw = localStorage.getItem('toeic_questions');
         if (raw) {
-            state.questions = JSON.parse(raw);
+            const parsed = JSON.parse(raw);
+            if (parsed.length < DEFAULT_QUESTIONS.length) {
+                state.questions = [...DEFAULT_QUESTIONS];
+                localStorage.setItem('toeic_questions', JSON.stringify(DEFAULT_QUESTIONS));
+            } else {
+                state.questions = parsed;
+            }
         } else {
             state.questions = [...DEFAULT_QUESTIONS];
+            localStorage.setItem('toeic_questions', JSON.stringify(DEFAULT_QUESTIONS));
         }
         renderQuestions();
     }
@@ -1140,6 +1738,7 @@
         showNotification(`Tema UI berhasil diganti ke ${themeName}!`, "success");
     }
 
+    // Apply active theme colors
     function applyUITheme(themeName) {
         const root = document.documentElement;
         
@@ -1289,9 +1888,9 @@
         return `${leftPart}<mark class="bg-yellow-300 text-slate-950 font-semibold rounded-sm px-0.5">${originalPart}</mark>${highlightText(rightPart, query)}`;
     }
 
-    // CALL GEMINI AI API FOR TRANSLATION
+    // CALL GEMINI AI API FOR TRANSLATION WITH EXPONENTIAL BACKOFF RETRY
     async function callGeminiTranslation(text, promptGuidance = "") {
-        const apiKey = ""; // Canvas auto-injects this key
+        const apiKey = ""; // Canvas auto-injects this key at runtime
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
         
         const systemPrompt = `You are a professional, expert English-Indonesian translator specializing in TOEFL/TOEIC academic English. Translate the provided text into clear, highly natural Indonesian. Keep specific formatting like underscores (-----) intact. Do not add conversational intro/outro. Provide ONLY the direct translation output. ${promptGuidance}`;
@@ -1303,9 +1902,9 @@
             }
         };
 
-        // Implementation of exponential backoff retry loop
-        let delay = 1000;
-        for (let attempt = 0; attempt < 3; attempt++) {
+        const retryDelays = [1000, 2000, 4000, 8000, 16000];
+        
+        for (let attempt = 0; attempt <= retryDelays.length; attempt++) {
             try {
                 const response = await fetch(apiUrl, {
                     method: 'POST',
@@ -1313,10 +1912,13 @@
                     body: JSON.stringify(payload)
                 });
                 
-                if (response.status === 429) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
+                if (response.status === 429 && attempt < retryDelays.length) {
+                    await new Promise(resolve => setTimeout(resolve, retryDelays[attempt]));
                     continue;
+                }
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
 
                 const result = await response.json();
@@ -1325,11 +1927,11 @@
                 
                 throw new Error("Format output Gemini tidak sesuai.");
             } catch (err) {
-                if (attempt === 2) {
+                if (attempt === retryDelays.length) {
+                    showNotification("Terjadi gangguan koneksi pada server AI setelah beberapa kali percobaan.", "error");
                     throw err;
                 }
-                await new Promise(resolve => setTimeout(resolve, delay));
-                delay *= 2;
+                await new Promise(resolve => setTimeout(resolve, retryDelays[attempt]));
             }
         }
         return null;
@@ -1348,6 +1950,13 @@
         // Toggle visibility if already translated
         if (state.translations[id]) {
             transBox.classList.toggle('hidden');
+            const isCurrentlyHidden = transBox.classList.contains('hidden');
+            transBtn.innerHTML = `
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                </svg>
+                <span>${isCurrentlyHidden ? 'Terjemahkan Soal' : 'Sembunyikan Terjemahan'}</span>
+            `;
             return;
         }
 
@@ -1381,19 +1990,31 @@
                     <p class="whitespace-pre-wrap leading-relaxed text-[11px] theme-text-sub">${translationResult}</p>
                 `;
                 transBox.classList.remove('hidden');
+                transBtn.innerHTML = `
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                    </svg>
+                    <span>Sembunyikan Terjemahan</span>
+                `;
                 showNotification("Terjemahan selesai diproses!", "success");
             } else {
                 showNotification("Gagal memproses terjemahan.", "error");
+                transBtn.innerHTML = `
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                    </svg>
+                    <span>Terjemahkan Soal</span>
+                `;
             }
         } catch (error) {
             showNotification("Koneksi gagal atau API bermasalah.", "error");
-        } finally {
             transBtn.innerHTML = `
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
                 </svg>
-                <span>Sembunyikan Terjemahan</span>
+                <span>Terjemahkan Soal</span>
             `;
+        } finally {
             transBtn.disabled = false;
         }
     }
@@ -1466,8 +2087,8 @@
 
         // Urutkan soal secara numerik berdasarkan nomor depannya
         filtered.sort((a, b) => {
-            const numA = parseInt(a.questionText) || 0;
-            const numB = parseInt(b.questionText) || 0;
+            const numA = parseInt(a.questionText.match(/\d+/)?.[0]) || 0;
+            const numB = parseInt(b.questionText.match(/\d+/)?.[0]) || 0;
             return numA - numB;
         });
 
@@ -1856,11 +2477,13 @@
         showNotification(`Gaya penyamaran diganti ke: ${coverValue}`, "success");
     }
 
+    // Menghilangkan banner sambutan
     function dismissWelcomeBanner() {
         if (welcomeBanner) welcomeBanner.classList.add('hidden');
         localStorage.setItem('toeic_welcome_dismissed', 'true');
     }
 
+    // Ekspor data backup dalam bentuk file JSON
     function exportDataJSON() {
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state.questions, null, 2));
         const downloadAnchor = document.createElement('a');
