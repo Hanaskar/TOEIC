@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situs ini tidak dapat dijangkau</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter & Courier Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .font-mono-custom {
+            font-family: 'Courier Prime', monospace;
+        }
+        /* Custom scrollbar for fast scanning */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-color);
+        }
+
+        /* --- MULTI-THEME CUSTOM ENGINE (CSS VARIABLES) --- */
+        
+        /* 1. Emerald Dark (Default Standar) */
+        :root {
+            --bg-main: #020617; /* slate-950 */
+            --bg-card: #0f172a; /* slate-900 */
+            --bg-nav: #0f172a;
+            --border-primary: #1e293b; /* slate-800 */
+            --border-hover: #334155;
+            --text-main: #f1f5f9; /* slate-100 */
+            --text-muted: #94a3b8; /* slate-400 */
+            --text-sub: #cbd5e1; /* slate-300 */
+            --accent-color: #10b981; /* emerald-500 */
+            --accent-bg: rgba(16, 185, 129, 0.1);
+            --accent-border: rgba(16, 185, 129, 0.3);
+            --accent-text: #34d399; /* emerald-400 */
+            --chrome-bg: #f7f7f7;
+            --chrome-text: #202124;
+            --chrome-sub: #5f6368;
+            --maintenance-bg: #020617;
+            --maintenance-card: #0f172a;
+            --maintenance-border: #1e293b;
+        }
+
+        /* 2. Slate Light Mode */
+        [data-theme="light"] {
+            --bg-main: #f8fafc; /* slate-50 */
+            --bg-card: #ffffff;
+            --bg-nav: #ffffff;
+            --border-primary: #e2e8f0; /* slate-200 */
+            --border-hover: #cbd5e1;
+            --text-main: #0f172a; /* slate-900 */
+            --text-muted: #64748b; /* slate-500 */
+            --text-sub: #334155; /* slate-600 */
+            --accent-color: #0d9488; /* teal-600 */
+            --accent-bg: rgba(13, 148, 136, 0.1);
+            --accent-border: rgba(13, 148, 136, 0.3);
+            --accent-text: #0f766e; /* teal-700 */
+            --chrome-bg: #f7f7f7;
+            --chrome-text: #202124;
+            --chrome-sub: #5f6368;
+            --maintenance-bg: #f1f5f9;
+            --maintenance-card: #ffffff;
+            --maintenance-border: #cbd5e1;
+        }
+
+        /* 3. Aesthetic Midnight Purple */
+        [data-theme="midnight"] {
+            --bg-main: #080315; /* very deep black purple */
+            --bg-card: #120924;
+            --bg-nav: #120924;
+            --border-primary: #291a4a;
+            --border-hover: #48307c;
+            --text-main: #f5f3ff; /* violet-50 */
+            --text-muted: #a78bfa; /* violet-400 */
+            --text-sub: #ddd6fe; /* violet-200 */
+            --accent-color: #8b5cf6; /* violet-500 */
+            --accent-bg: rgba(139, 92, 246, 0.15);
+            --accent-border: rgba(139, 92, 246, 0.3);
+            --accent-text: #c084fc; /* purple-400 */
+            --chrome-bg: #202124; /* Chrome Dark Mode */
+            --chrome-text: #e8eaed;
+            --chrome-sub: #9aa0a6;
+            --maintenance-bg: #080315;
+            --maintenance-card: #120924;
+            --maintenance-border: #291a4a;
+        }
+
+        /* 4. Cobalt Cyber Blue */
+        [data-theme="cobalt"] {
+            --bg-main: #030d1d; /* Deep navy blue */
+            --bg-card: #08172e;
+            --bg-nav: #08172e;
+            --border-primary: #122847;
+            --border-hover: #1e3f6e;
+            --text-main: #e2f1ff;
+            --text-muted: #82b2ec;
+            --text-sub: #b2d3fa;
+            --accent-color: #3b82f6; /* blue-500 */
+            --accent-bg: rgba(59, 130, 246, 0.15);
+            --accent-border: rgba(59, 130, 246, 0.3);
+            --accent-text: #60a5fa; /* blue-400 */
+            --chrome-bg: #202124; /* Chrome Dark Mode */
+            --chrome-text: #e8eaed;
+            --chrome-sub: #9aa0a6;
+            --maintenance-bg: #030d1d;
+            --maintenance-card: #08172e;
+            --maintenance-border: #122847;
+        }
+
+        /* UI Mapping Rules */
+        .theme-bg-main { background-color: var(--bg-main) !important; }
+        .theme-bg-card { background-color: var(--bg-card) !important; }
+        .theme-bg-nav { background-color: var(--bg-nav) !important; }
+        .theme-border { border-color: var(--border-primary) !important; }
+        .theme-border-hover:hover { border-color: var(--border-hover) !important; }
+        .theme-text-main { color: var(--text-main) !important; }
+        .theme-text-muted { color: var(--text-muted) !important; }
+        .theme-text-sub { color: var(--text-sub) !important; }
+        
+        .theme-accent-color { color: var(--accent-color) !important; }
+        .theme-accent-bg { background-color: var(--accent-bg) !important; }
+        .theme-accent-border { border-color: var(--accent-border) !important; }
+        .theme-accent-text { color: var(--accent-text) !important; }
+
+        .theme-chrome-bg { background-color: var(--chrome-bg) !important; }
+        .theme-chrome-text { color: var(--chrome-text) !important; }
+        .theme-chrome-sub { color: var(--chrome-sub) !important; }
+
+        .theme-maintenance-bg { background-color: var(--maintenance-bg) !important; }
+        .theme-maintenance-card { background-color: var(--maintenance-card) !important; }
+        .theme-maintenance-border { border-color: var(--maintenance-border) !important; }
+
+        .theme-input {
+            background-color: var(--bg-main) !important;
+            color: var(--text-main) !important;
+            border-color: var(--border-primary) !important;
+        }
+        .theme-input::placeholder {
+            color: var(--text-muted) !important;
+            opacity: 0.6;
+        }
+
+        /* Loading animation */
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="theme-bg-main theme-text-main min-h-screen selection:bg-yellow-200 selection:text-slate-900">
+
+<script>
+    // Database Soal Lengkap dari Screenshot User (101 - 130)
+    const DEFAULT_QUESTIONS = [
+        {
+            id: "q101",
+            questionText: "101. Ms. Jamilah requested a ------- of her hotel reservation to accommodate her new travel dates.",
+            options: ["A. modification", "B. modifies", "C. modifying", "D. modify"],
+            correctAnswer: "A. modification",
+            explanation: "Setelah artikel 'a' diperlukan kata benda (noun). 'Modification' adalah bentuk kata benda yang tepat.",
+            part: "Part 5",
+            tags: "Grammar, Noun",
+            imageBase64: ""
+        },
+        {
+            id: "q102",
+            questionText: "102. Dr. Lopez presented his research on renewable energy sources ------- the international conference.",
+            options: ["A. on", "B. with", "C. at", "D. through"],
+            correctAnswer: "C. at",
+            explanation: "Preposisi tempat 'at' digunakan untuk merujuk ke suatu acara atau lokasi spesifik (at the international conference).",
+            part: "Part 5",
+            tags: "Preposition",
+            imageBase64: ""
+        },
+        {
+            id: "q103",
+            questionText: "103. The marketing team expects that the new advertising campaign will ------- increase website traffic.",
+            options: ["A. sign", "B. significant", "C. significance", "D. significantly"],
+            correctAnswer: "D. significantly",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'significantly' untuk menerangkan kata kerja 'increase'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q104",
+            questionText: "104. Employees are reminded to submit their travel expense reports ------- five business days of returning.",
+            options: ["A. within", "B. under", "C. between", "D. against"],
+            correctAnswer: "A. within",
+            explanation: "Preposisi 'within' tepat dipasangkan dengan tenggat waktu 'five business days' (dalam waktu lima hari kerja).",
+            part: "Part 5",
+            tags: "Preposition",
+            imageBase64: ""
+        },
+        {
+            id: "q105",
+            questionText: "105. Although the initial prototype had several flaws, the ------- version performed exceptionally well in tests.",
+            options: ["A. update", "B. updated", "C. updates", "D. updating"],
+            correctAnswer: "B. updated",
+            explanation: "Dibutuhkan kata sifat (adjective) berbentuk past participle 'updated' untuk merujuk pada 'version' (versi yang diperbarui).",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q106",
+            questionText: "106. The newly appointed CEO is known for her ------- approach to resolving internal conflicts.",
+            options: ["A. collaboration", "B. collaborate", "C. collaborative", "D. collaboratively"],
+            correctAnswer: "C. collaborative",
+            explanation: "Dibutuhkan kata sifat (adjective) 'collaborative' untuk menerangkan kata benda 'approach'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q107",
+            questionText: "107. The accounting department will conduct a ------- review of all financial statements next month.",
+            options: ["A. thorough", "B. thoroughly", "C. thoroughness", "D. more thoroughly"],
+            correctAnswer: "A. thorough",
+            explanation: "Dibutuhkan kata sifat (adjective) 'thorough' (menyeluruh/mendalam) untuk menerangkan kata benda 'review'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q108",
+            questionText: "108. The IT department resolved the software issue as ------- as possible to minimize company downtime.",
+            options: ["A. quick", "B. quickly", "C. quickness", "D. quicker"],
+            correctAnswer: "B. quickly",
+            explanation: "Frasa 'as ... as possible' membutuhkan kata keterangan (adverb) 'quickly' untuk menerangkan cara penyelesaian kata kerja 'resolved'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q109",
+            questionText: "109. High demand for the new smartphone model led to a ------- shortage in retail stores nationwide.",
+            options: ["A. temporary", "B. temporarily", "C. temporariness", "D. temporize"],
+            correctAnswer: "A. temporary",
+            explanation: "Dibutuhkan kata sifat (adjective) 'temporary' (sementara) untuk menerangkan kata benda 'shortage'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q110",
+            questionText: "110. Under the terms of the agreement, both parties must ------- notify the other of any changes.",
+            options: ["A. prompt", "B. promptly", "C. promptness", "D. prompter"],
+            correctAnswer: "B. promptly",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'promptly' (dengan segera) untuk memodifikasi kata kerja 'notify'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q111",
+            questionText: "111. The committee members were ------- by the speaker's presentation on sustainable agriculture.",
+            options: ["A. impress", "B. impressed", "C. impressive", "D. impression"],
+            correctAnswer: "B. impressed",
+            explanation: "Kalimat berbentuk pasif 'were ------- by' membutuhkan past participle (Verb 3) berfungsi sebagai kata sifat pasif, yaitu 'impressed' (terkesan).",
+            part: "Part 5",
+            tags: "Grammar, Verb",
+            imageBase64: ""
+        },
+        {
+            id: "q112",
+            questionText: "112. Mr. Henderson's promotion to regional director was ------- announced at yesterday's staff meeting.",
+            options: ["A. official", "B. officially", "C. officialize", "D. officials"],
+            correctAnswer: "B. officially",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'officially' (secara resmi) untuk menerangkan kata kerja pasif 'was announced'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q113",
+            questionText: "113. The new software program will allow employees to work more ------- and reduce administrative errors.",
+            options: ["A. efficient", "B. efficiently", "C. efficiency", "D. efficiencies"],
+            correctAnswer: "B. efficiently",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'efficiently' (dengan efisien) untuk menerangkan kata kerja 'work'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q114",
+            questionText: "114. Despite the high cost of raw materials, the company ------- to maintain its current pricing structure.",
+            options: ["A. manage", "B. managing", "C. managed", "D. manageable"],
+            correctAnswer: "C. managed",
+            explanation: "Kalimat menunjukkan tindakan di masa lalu atau fakta lengkap yang membutuhkan kata kerja berkonjugasi (past tense), yaitu 'managed'.",
+            part: "Part 5",
+            tags: "Grammar, Verb",
+            imageBase64: ""
+        },
+        {
+            id: "q115",
+            questionText: "115. Ms. Patel is highly recommended for the position because of her ------- experience in international trade law.",
+            options: ["A. extensive", "B. extensively", "C. extension", "D. extend"],
+            correctAnswer: "A. extensive",
+            explanation: "Dibutuhkan kata sifat (adjective) 'extensive' (luas/banyak) untuk menerangkan kata benda 'experience'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q116",
+            questionText: "116. The construction of the new office building is expected to be completed ------- the end of the year.",
+            options: ["A. by", "B. on", "C. in", "D. of"],
+            correctAnswer: "A. by",
+            explanation: "Preposisi waktu 'by' (menjelang/paling lambat) tepat digunakan untuk menyatakan batas akhir waktu (by the end of the year).",
+            part: "Part 5",
+            tags: "Preposition",
+            imageBase64: ""
+        },
+        {
+            id: "q117",
+            questionText: "117. Customers who purchase a premium membership will receive ------- shipping on all online orders.",
+            options: ["A. complimentary", "B. compliment", "C. complimented", "D. complimenting"],
+            correctAnswer: "A. complimentary",
+            explanation: "Dibutuhkan kata sifat (adjective) 'complimentary' (gratis) untuk menerangkan kata benda 'shipping'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q118",
+            questionText: "118. The HR director will ------- all applications to select the most qualified candidates for interviews.",
+            options: ["A. review", "B. reviewer", "C. reviewed", "D. reviewing"],
+            correctAnswer: "A. review",
+            explanation: "Setelah modal verb 'will' harus diikuti oleh kata kerja bentuk pertama/dasar (bare infinitive), yaitu 'review'.",
+            part: "Part 5",
+            tags: "Grammar, Verb",
+            imageBase64: ""
+        },
+        {
+            id: "q119",
+            questionText: "119. To ensure safety, all lab technicians must wear ------- clothing when handling hazardous chemicals.",
+            options: ["A. protect", "B. protective", "C. protection", "D. protects"],
+            correctAnswer: "B. protective",
+            explanation: "Dibutuhkan kata sifat (adjective) 'protective' (pelindung) untuk menerangkan kata benda 'clothing'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q120",
+            questionText: "120. Mr. Kim decided to hire a consultant to ------- with the implementation of the new database system.",
+            options: ["A. assist", "B. assistance", "C. assistant", "D. assisted"],
+            correctAnswer: "A. assist",
+            explanation: "Setelah infinitif 'to' diperlukan kata kerja dasar (Verb 1), yaitu 'assist' yang dipasangkan dengan preposisi 'with' (membantu proses...).",
+            part: "Part 5",
+            tags: "Grammar, Verb",
+            imageBase64: ""
+        },
+        {
+            id: "q121",
+            questionText: "121. Regular maintenance of the office equipment is essential to prevent ------- breakdowns and costly repairs.",
+            options: ["A. frequent", "B. frequently", "C. frequency", "D. frequenting"],
+            correctAnswer: "A. frequent",
+            explanation: "Dibutuhkan kata sifat (adjective) 'frequent' (sering terjadi) untuk menerangkan kata benda 'breakdowns'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q122",
+            questionText: "122. The board of directors ------- approved the proposed merger after a lengthy discussion.",
+            options: ["A. unanimous", "B. unanimously", "C. unanimity", "D. unanimousness"],
+            correctAnswer: "B. unanimously",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'unanimously' (secara bulat/sepakat) untuk menerangkan kata kerja 'approved'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q123",
+            questionText: "123. The manager requested a ------- report on the project's progress by Friday afternoon.",
+            options: ["A. detail", "B. detailed", "C. detailing", "D. details"],
+            correctAnswer: "B. detailed",
+            explanation: "Dibutuhkan kata sifat (adjective) berupa past participle 'detailed' (yang mendetail/rinci) untuk menerangkan kata benda 'report'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q124",
+            questionText: "124. Employees who are ------- in the leadership program will attend a seminar next week.",
+            options: ["A. enroll", "B. enrolling", "C. enrolled", "D. enrollment"],
+            correctAnswer: "C. enrolled",
+            explanation: "Konstruksi pasif 'are ------- in' (terdaftar di) membutuhkan past participle 'enrolled'.",
+            part: "Part 5",
+            tags: "Grammar, Verb",
+            imageBase64: ""
+        },
+        {
+            id: "q125",
+            questionText: "125. The company's financial performance has improved ------- since the implementation of the new strategy.",
+            options: ["A. steady", "B. steadily", "C. steadiness", "D. steadied"],
+            correctAnswer: "B. steadily",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'steadily' (secara stabil) untuk menerangkan kata kerja 'has improved'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q126",
+            questionText: "126. The new marketing campaign is designed to target a ------- audience than previous ones.",
+            options: ["A. broad", "B. broader", "C. broadly", "D. breadth"],
+            correctAnswer: "B. broader",
+            explanation: "Kata penanda 'than' menunjukkan tingkat perbandingan (comparative), sehingga kata sifat yang tepat adalah 'broader' (lebih luas).",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q127",
+            questionText: "127. Please ensure that all client files are stored ------- in the filing cabinet.",
+            options: ["A. secure", "B. securely", "C. security", "D. securing"],
+            correctAnswer: "B. securely",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'securely' (secara aman) untuk menerangkan kata kerja pasif 'are stored'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q128",
+            questionText: "128. The workshop is designed to help managers ------- communicate their expectations to team members.",
+            options: ["A. effective", "B. effectively", "C. effectiveness", "D. effect"],
+            correctAnswer: "B. effectively",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'effectively' (secara efektif) untuk menerangkan kata kerja 'communicate'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        },
+        {
+            id: "q129",
+            questionText: "129. The budget committee will meet tomorrow to discuss the ------- allocation of resources.",
+            options: ["A. propose", "B. proposed", "C. proposing", "D. proposal"],
+            correctAnswer: "B. proposed",
+            explanation: "Dibutuhkan kata sifat (adjective) berbentuk past participle 'proposed' (yang diusulkan) untuk menerangkan kata benda 'allocation'.",
+            part: "Part 5",
+            tags: "Grammar, Adjective",
+            imageBase64: ""
+        },
+        {
+            id: "q130",
+            questionText: "130. The legal department must review the contract ------- before it is signed by the president.",
+            options: ["A. care", "B. careful", "C. carefully", "D. carefulness"],
+            correctAnswer: "C. carefully",
+            explanation: "Dibutuhkan kata keterangan (adverb) 'carefully' (dengan teliti/hati-hati) untuk menerangkan kata kerja 'review'.",
+            part: "Part 5",
+            tags: "Grammar, Adverb",
+            imageBase64: ""
+        }
+    ];
+
+    // Smart sync local storage to automatically append newly added default questions without manual resets
+    const stored = localStorage.getItem('toeic_questions');
+    if (!stored || JSON.parse(stored).length < DEFAULT_QUESTIONS.length) {
+        localStorage.setItem('toeic_questions', JSON.stringify(DEFAULT_QUESTIONS));
+    }
+</script>
+
+<div id="app" class="relative min-h-screen flex flex-col">
+
+    <!-- Cover 1: Chrome No Internet (Adapts to Chrome Light or Dark theme based on UI selection) -->
+    <div id="cover-chrome" class="fixed inset-0 theme-chrome-bg z-50 overflow-auto select-none font-sans flex items-center justify-center p-6">
+        <div class="max-w-xl w-full text-left">
+            <div class="mb-8 theme-chrome-sub">
+                <!-- Chrome Dinosaur Mascot Icon -->
+                <svg class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19,3H16V5H15V6H14V7H13V8H11V7H10V6H9V5H8V3H5V5H4V11H3V13H4V14H5V15H6V16H7V17H8V18H9V19H12V18H13V17H14V16H15V15H16V13H17V11H18V9H19V8H20V5H19V3M9,7H7V5H9V7M15,7H13V5H15V7M13,11H11V9H13V11M9,13H7V11H9V13Z"/>
+                </svg>
+            </div>
+            <h1 class="text-[22px] theme-chrome-text font-medium leading-tight mb-4">Situs ini tidak dapat dijangkau</h1>
+            <p class="theme-chrome-sub text-[14px] mb-1">Sambungan ke internet Anda terputus atau ditolak oleh server sekolah.</p>
+            <p class="theme-chrome-sub text-[14px] mb-6">Periksa kabel modem, router, atau sambungan Wi-Fi sekolah Anda.</p>
+            <div class="theme-chrome-sub text-[13px] border-b border-gray-200/20 pb-4 mb-4">
+                <p class="font-semibold mb-1">Coba:</p>
+                <ul class="list-disc list-inside space-y-1 pl-1">
+                    <li>Menghubungi admin jaringan setempat</li>
+                    <li>Mendiagnosis masalah jaringan Anda</li>
+                </ul>
+            </div>
+            <div class="flex items-center justify-between text-[13px] theme-chrome-sub">
+                <span>ERR_CONNECTION_REFUSED</span>
+                <button id="btn-chrome-refresh" onclick="attemptRefresh()" class="bg-[#1a73e8] text-white hover:bg-[#1557b0] px-6 py-2 rounded-md font-medium transition duration-150">Muat Ulang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cover 2: University Maintenance Portal (Fully Theme-Adapted) -->
+    <div id="cover-maintenance" class="hidden fixed inset-0 theme-maintenance-bg z-50 flex items-center justify-center p-4 select-none">
+        <div class="max-w-md w-full theme-maintenance-card theme-text-main rounded-xl shadow-2xl p-8 border theme-maintenance-border text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500"></div>
+            <div onclick="revealSecretUnlockInput()" class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6 border border-amber-500/20 cursor-pointer hover:bg-amber-500/20 transition-all">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            </div>
+            <h2 onclick="revealSecretUnlockInput()" class="text-xl font-bold tracking-tight theme-text-main mb-2 cursor-pointer">PEMELIHARAAN SISTEM TERJADWAL</h2>
+            <p class="text-sm theme-text-muted mb-6 font-sans">Portal Akademik & Ujian Online sedang dinonaktifkan sementara untuk sinkronisasi database server pusat.</p>
+            
+            <div class="space-y-3 text-left bg-black/30 p-4 rounded-lg border theme-maintenance-border text-xs theme-text-muted font-mono-custom mb-6">
+                <p># systemctl status school-portal.service</p>
+                <p class="text-amber-400">> status: MAINTENANCE_MODE</p>
+                <p class="theme-text-muted">> target: db-migration-v4.0.2</p>
+            </div>
+
+            <!-- Secret Passcode Field Box -->
+            <div id="hidden-passcode-box" class="hidden mb-6 p-3 bg-black/30 rounded-lg border theme-maintenance-border">
+                <label class="block text-[10px] theme-text-muted font-semibold mb-1.5 uppercase tracking-wider">Masukkan Passcode Keamanan</label>
+                <input type="password" id="secret-input-field" placeholder="••••" class="w-full theme-input rounded px-3 py-1.5 text-center text-sm font-bold focus:outline-none">
+            </div>
+
+            <p class="text-xs theme-text-muted font-sans">Silakan hubungi administrator IT sekolah atau pengawas jika ini adalah kekeliruan.</p>
+        </div>
+    </div>
+
+    <!-- REAL TOIEC DATABASE DASHBOARD -->
+    <div id="real-dashboard" class="hidden flex-1 flex flex-col min-h-screen theme-bg-main theme-text-main">
+        <!-- Top Nav Bar -->
+        <header class="theme-bg-nav border-b theme-border px-4 py-3 sticky top-0 z-30 shadow-md">
+            <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="p-2 theme-accent-bg theme-accent-text rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg tracking-wide theme-text-main flex items-center gap-1.5">
+                            TOEIC Search Hub <span class="text-xs theme-accent-bg theme-accent-text border theme-accent-border px-1.5 py-0.5 rounded font-normal">Super-Fast</span>
+                        </h1>
+                        <p class="text-[10px] theme-text-muted">Database Kisi-Kisi & Kunci Jawaban TOEIC</p>
+                    </div>
+                </div>
+
+                <!-- Central Control Panel (Lock Status, Theme Switcher & Config) -->
+                <div class="flex items-center gap-2">
+                    <!-- Quick Lock Indicator -->
+                    <button onclick="lockApp()" class="flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white font-medium text-xs px-3 py-2 rounded-lg transition shadow-lg active:scale-95" title="Tekan ESC untuk mengunci instan">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <span class="hidden md:inline">Kunci Layar (ESC)</span>
+                    </button>
+
+                    <!-- Add New Question Trigger Button -->
+                    <button onclick="openQuestionModal()" class="flex items-center gap-1 theme-accent-bg theme-accent-text hover:bg-emerald-500 hover:text-white font-medium text-xs px-3 py-2 rounded-lg border theme-accent-border transition active:scale-95">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                        <span>Tambah Soal</span>
+                    </button>
+
+                    <!-- Settings Trigger Button -->
+                    <button onclick="openSettingsModal()" class="p-2 theme-bg-card border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-lg transition" title="Pengaturan & Tema">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content Area -->
+        <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6 flex flex-col gap-6">
+
+            <!-- Welcome Strategy Banner -->
+            <div id="welcome-banner" class="theme-bg-card p-4 rounded-xl border theme-border relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 class="font-semibold theme-accent-text text-sm mb-1">🎯 Strategi Pencarian & Terjemahan Cepat TOEIC</h3>
+                    <p class="text-xs theme-text-sub leading-relaxed">
+                        Ketikkan penggalan kata kunci soal di kotak pencarian untuk mencocokkan secara instan. 
+                        Gunakan tombol <span class="theme-accent-text font-semibold">🌐 Terjemahkan</span> di setiap kartu soal untuk menerjemahkan teks Inggris ke Bahasa Indonesia via Gemini AI!
+                        <strong>Tekan "ESC" kapan saja untuk mengunci instan kembali ke penyamaran!</strong>
+                    </p>
+                </div>
+                <div class="flex gap-2 shrink-0">
+                    <button onclick="dismissWelcomeBanner()" class="theme-text-muted hover:theme-text-main text-xs px-2.5 py-1.5 rounded-lg border theme-border theme-bg-main hover:bg-slate-800 transition">Sembunyikan</button>
+                </div>
+            </div>
+
+            <!-- SEARCH AND FILTER PANEL -->
+            <div class="theme-bg-card border theme-border rounded-xl p-4 shadow-xl flex flex-col gap-4">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 theme-text-muted pointer-events-none">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </span>
+                    <input type="text" id="global-search-input" placeholder="Ketik kata kunci atau penggalan soal di sini... (Contoh: committee members, Jamilah)" 
+                           class="w-full theme-input border rounded-lg pl-10 pr-12 py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+                           onkeyup="handleSearchChange()">
+                    
+                    <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute inset-y-0 right-0 flex items-center pr-3 theme-text-muted hover:theme-text-main">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Filters & Category Badges -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t theme-border">
+                    <div class="flex flex-wrap items-center gap-2" id="filter-part-group">
+                        <span class="text-xs theme-text-muted font-medium mr-1">Bagian TOEIC:</span>
+                        <button onclick="setPartFilter('all')" id="btn-filter-all" class="px-3 py-1 theme-accent-bg theme-accent-text border theme-accent-border rounded-full text-xs font-semibold shadow transition duration-150">Semua Soal</button>
+                        <button onclick="setPartFilter('Part 1')" id="btn-filter-p1" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 1 (Photos)</button>
+                        <button onclick="setPartFilter('Part 2')" id="btn-filter-p2" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 2 (Q&A)</button>
+                        <button onclick="setPartFilter('Part 3')" id="btn-filter-p3" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 3 (Conversation)</button>
+                        <button onclick="setPartFilter('Part 4')" id="btn-filter-p4" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 4 (Talks)</button>
+                        <button onclick="setPartFilter('Part 5')" id="btn-filter-p5" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 5 (Incomplete)</button>
+                        <button onclick="setPartFilter('Part 6')" id="btn-filter-p6" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 6 (Completion)</button>
+                        <button onclick="setPartFilter('Part 7')" id="btn-filter-p7" class="px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150">Part 7 (Reading)</button>
+                    </div>
+
+                    <div class="text-xs theme-text-muted font-medium">
+                        Ditemukan: <span id="counter-match" class="theme-accent-text font-bold">0</span> dari <span id="counter-total" class="font-bold">0</span> Soal
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAIN SEARCH RESULTS SECTION -->
+            <div id="questions-grid-container" class="grid grid-cols-1 gap-4">
+                <!-- Question Cards dynamically injected here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden theme-bg-card border theme-border rounded-xl p-12 text-center">
+                <div class="w-16 h-16 bg-slate-800/50 text-slate-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="font-semibold theme-text-sub mb-1">Tidak Ada Soal yang Cocok</h3>
+                <p class="text-xs theme-text-muted max-w-md mx-auto">Tidak dapat menemukan soal dengan kata kunci tersebut. Coba cari kata kunci lain atau tambahkan soal baru.</p>
+            </div>
+
+        </main>
+
+        <!-- Floating Back to Top Button -->
+        <button id="btn-back-to-top" onclick="scrollToTop()" class="hidden fixed bottom-6 right-6 theme-accent-bg border theme-accent-border theme-accent-text p-3 rounded-full shadow-2xl transition-all duration-300 z-30 focus:outline-none hover:scale-110 active:scale-95" title="Kembali ke Atas">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+            </svg>
+        </button>
+
+        <!-- ASISTEN KAMUS AI (Floating Panel) -->
+        <div id="ai-translator-panel" class="fixed bottom-6 left-6 z-40 transition-all duration-350">
+            <!-- Toggle Button -->
+            <button onclick="toggleAIPanel()" class="theme-accent-bg border theme-accent-border theme-accent-text font-semibold text-xs px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 hover:scale-105 transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                </svg>
+                <span>Asisten Kamus AI</span>
+            </button>
+
+            <!-- Expanded Panel View -->
+            <div id="ai-panel-body" class="hidden mt-2 theme-bg-card border theme-border w-80 rounded-xl shadow-2xl p-4 flex flex-col gap-3 animate-fade-in">
+                <div class="flex items-center justify-between border-b theme-border pb-2">
+                    <span class="text-xs font-bold theme-accent-text flex items-center gap-1">
+                        <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                        Tanya & Terjemahkan AI
+                    </span>
+                    <button onclick="toggleAIPanel()" class="theme-text-muted hover:theme-text-main">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <textarea id="ai-input-text" rows="3" placeholder="Ketik kata sulit atau kalimat bahasa inggris di sini..." class="w-full theme-input border rounded p-2 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"></textarea>
+                <button onclick="handleAITranslateAction()" class="w-full theme-accent-bg border theme-accent-border theme-accent-text font-bold text-xs py-2 rounded transition hover:opacity-90">Terjemahkan Sekarang</button>
+                
+                <!-- Result Box -->
+                <div id="ai-output-box" class="hidden theme-bg-main border theme-border p-2.5 rounded text-[11px] theme-text-sub max-h-40 overflow-y-auto leading-relaxed">
+                    <!-- Dynamic Translation Output -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Area -->
+        <footer class="theme-bg-nav border-t theme-border py-4 px-6 text-center text-xs theme-text-muted mt-auto">
+            <p>© 2026 Sistem Informasi Pendidikan Mandiri. Hak Cipta Dilindungi.</p>
+        </footer>
+    </div>
+
+
+    <!-- MODAL: ADD / EDIT QUESTION -->
+    <div id="question-modal" class="hidden fixed inset-0 bg-black/85 z-40 flex items-center justify-center p-4 overflow-y-auto">
+        <div class="theme-bg-card border theme-border rounded-xl w-full max-w-2xl shadow-2xl relative overflow-hidden my-8">
+            <div class="theme-bg-nav px-6 py-4 border-b theme-border flex items-center justify-between">
+                <h3 id="modal-title" class="text-base font-bold theme-text-main">Tambah Soal Baru</h3>
+                <button onclick="closeQuestionModal()" class="theme-text-muted hover:theme-text-main">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="question-form" onsubmit="saveQuestion(event)" class="p-6 space-y-4">
+                <input type="hidden" id="form-question-id">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold theme-text-muted mb-1">Bagian TOEIC / Part</label>
+                        <select id="form-part" class="w-full theme-input border rounded px-3 py-2 text-xs focus:outline-none">
+                            <option value="Part 1">Part 1 - Photographs</option>
+                            <option value="Part 2">Part 2 - Question & Answer</option>
+                            <option value="Part 3">Part 3 - Conversations</option>
+                            <option value="Part 4">Part 4 - Talks</option>
+                            <option value="Part 5" selected>Part 5 - Incomplete Sentences</option>
+                            <option value="Part 6">Part 6 - Text Completion</option>
+                            <option value="Part 7">Part 7 - Reading Comprehension</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold theme-text-muted mb-1">Label / Tags (Opsional)</label>
+                        <input type="text" id="form-tags" placeholder="e.g. Grammar, Vocab, Pro-noun" class="w-full theme-input border rounded px-3 py-2 text-xs focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-1">Kalimat Soal / Teks Utama</label>
+                    <textarea id="form-question-text" rows="3" required placeholder="Tulis atau paste potongan kalimat soal di sini..." class="w-full theme-input border rounded px-3 py-2 text-xs focus:outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-1">Opsi Jawaban (A, B, C, D)</label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <input type="text" id="form-opt-a" placeholder="Opsi A" class="theme-input border rounded px-3 py-1.5 text-xs focus:outline-none">
+                        <input type="text" id="form-opt-b" placeholder="Opsi B" class="theme-input border rounded px-3 py-1.5 text-xs focus:outline-none">
+                        <input type="text" id="form-opt-c" placeholder="Opsi C" class="theme-input border rounded px-3 py-1.5 text-xs focus:outline-none">
+                        <input type="text" id="form-opt-d" placeholder="Opsi D" class="theme-input border rounded px-3 py-1.5 text-xs focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold theme-text-muted mb-1">Kunci Jawaban yang Benar</label>
+                        <input type="text" id="form-correct-answer" required placeholder="Contoh: B. which" class="w-full theme-input border rounded px-3 py-2 text-xs focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold theme-text-muted mb-1">Upload Screenshot Soal (Opsional)</label>
+                        <input type="file" id="form-image-input" accept="image/*" onchange="handleImageUpload(event)" class="w-full text-xs theme-text-muted theme-input border rounded px-2 py-1.5 cursor-pointer file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-slate-800 file:text-slate-200 hover:file:bg-slate-750">
+                        <span id="upload-status" class="text-[10px] text-emerald-400 block mt-1 hidden">✓ Gambar berhasil dikompresi</span>
+                    </div>
+                </div>
+
+                <div id="image-preview-container" class="hidden relative rounded-lg border theme-border max-h-40 overflow-hidden theme-bg-main p-2">
+                    <img id="image-preview-img" src="" class="max-h-36 mx-auto object-contain">
+                    <button type="button" onclick="removeUploadedImage()" class="absolute top-2 right-2 p-1 bg-red-600 text-white rounded-full hover:bg-red-700 transition" title="Hapus Gambar">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-1">Penjelasan / Catatan Tambahan (Opsional)</label>
+                    <textarea id="form-explanation" rows="2" placeholder="Tulis alasan kenapa kunci jawabannya itu..." class="w-full theme-input border rounded px-3 py-2 text-xs focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-4 border-t theme-border flex justify-end gap-2">
+                    <button type="button" onclick="closeQuestionModal()" class="px-4 py-2 theme-bg-main border theme-border hover:border-slate-500 theme-text-main rounded text-xs font-medium transition">Batal</button>
+                    <button type="submit" class="px-4 py-2 theme-accent-bg border theme-accent-border theme-accent-text hover:bg-emerald-500 hover:text-white rounded text-xs font-medium transition shadow-md">Simpan Soal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- MODAL: SETTINGS & COVER CONFIG -->
+    <div id="settings-modal" class="hidden fixed inset-0 bg-black/85 z-40 flex items-center justify-center p-4">
+        <div class="theme-bg-card border theme-border rounded-xl w-full max-w-md shadow-2xl relative overflow-hidden animate-fade-in">
+            <div class="theme-bg-nav px-6 py-4 border-b theme-border flex items-center justify-between">
+                <h3 class="text-base font-bold theme-text-main flex items-center gap-1.5">
+                    <svg class="w-5 h-5 theme-accent-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    Konfigurasi Keamanan & Tema UI
+                </h3>
+                <button onclick="closeSettingsModal()" class="theme-text-muted hover:theme-text-main">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+                <!-- UI Theme Selection Grid -->
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-2.5">Pilih Tema Antarmuka (UI Theme)</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <!-- Theme Option 1 -->
+                        <button onclick="selectUITheme('emerald-dark')" id="theme-btn-emerald-dark" class="flex flex-col items-start p-2.5 rounded-lg border text-left transition relative overflow-hidden group">
+                            <span class="text-xs font-bold text-white mb-1 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+                                Emerald Dark
+                            </span>
+                            <span class="text-[9px] text-slate-400">Gaya default standar, kontras tinggi.</span>
+                        </button>
+                        
+                        <!-- Theme Option 2 -->
+                        <button onclick="selectUITheme('light')" id="theme-btn-light" class="flex flex-col items-start p-2.5 rounded-lg border text-left transition relative overflow-hidden group bg-white border-slate-200">
+                            <span class="text-xs font-bold text-slate-900 mb-1 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-teal-600 inline-block"></span>
+                                Slate Light
+                            </span>
+                            <span class="text-[9px] text-slate-500">Tampilan terang, bersih, profesional.</span>
+                        </button>
+
+                        <!-- Theme Option 3 -->
+                        <button onclick="selectUITheme('midnight')" id="theme-btn-midnight" class="flex flex-col items-start p-2.5 rounded-lg border text-left transition relative overflow-hidden group">
+                            <span class="text-xs font-bold text-violet-300 mb-1 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-violet-500 inline-block"></span>
+                                Midnight Purple
+                            </span>
+                            <span class="text-[9px] text-slate-400">Warna ungu pekat, estetik & elegan.</span>
+                        </button>
+
+                        <!-- Theme Option 4 -->
+                        <button onclick="selectUITheme('cobalt')" id="theme-btn-cobalt" class="flex flex-col items-start p-2.5 rounded-lg border text-left transition relative overflow-hidden group">
+                            <span class="text-xs font-bold text-blue-300 mb-1 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+                                Cobalt Blue
+                            </span>
+                            <span class="text-[9px] text-slate-400">Nuansa navy klasik, kokoh & rapi.</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cover Select -->
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-1.5">Model Penyamaran (Halaman Kunci/Mati)</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center gap-2 theme-bg-main p-2.5 rounded border theme-border cursor-pointer hover:border-slate-500 transition">
+                            <input type="radio" name="cover-choice" value="chrome" checked onchange="handleCoverChoiceChange('chrome')" class="text-emerald-500 focus:ring-0">
+                            <div class="text-xs">
+                                <p class="font-semibold theme-text-main">Google Chrome Offline Dino</p>
+                                <p class="text-[10px] theme-text-muted">"Situs ini tidak dapat dijangkau" - Sangat meyakinkan.</p>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-2 theme-bg-main p-2.5 rounded border theme-border cursor-pointer hover:border-slate-500 transition">
+                            <input type="radio" name="cover-choice" value="maintenance" onchange="handleCoverChoiceChange('maintenance')" class="text-emerald-500 focus:ring-0">
+                            <div class="text-xs">
+                                <p class="font-semibold theme-text-main">Sistem Akademik Maintenance</p>
+                                <p class="text-[10px] theme-text-muted">Pengumuman perbaikan sistem lokal kampus/sekolah.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Custom Security Passcode -->
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-1">Passcode Rahasia (Aktif saat mode Maintenance)</label>
+                    <input type="text" id="setting-passcode" value="1234" class="w-full theme-input border rounded px-3 py-2 text-xs focus:outline-none">
+                    <p class="text-[10px] theme-text-muted mt-1">Gunakan kata kunci atau angka rahasia ini untuk membuka kembali layar yang dikunci.</p>
+                </div>
+
+                <!-- Blind Word Trigger -->
+                <div>
+                    <label class="block text-xs font-semibold theme-text-muted mb-1">Ketukan Keyboard Buta</label>
+                    <div class="theme-bg-main p-2.5 text-xs rounded border theme-border theme-text-sub font-mono-custom">
+                        Cukup ketik huruf <span class="theme-accent-text font-bold">t - o - e - i - c</span> berturut-turut di keyboard saat halaman mati terbuka untuk masuk kembali secara instan.
+                    </div>
+                </div>
+
+                <!-- Quick Reset/Backup DB -->
+                <div class="pt-4 border-t theme-border">
+                    <label class="block text-xs font-semibold theme-text-muted mb-2">Manajemen Data</label>
+                    <div class="grid grid-cols-1 gap-2">
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="exportDataJSON()" class="theme-bg-main border theme-border hover:border-slate-500 theme-text-main font-semibold text-xs py-2 px-3 rounded text-center transition">Export Backup</button>
+                            <button onclick="document.getElementById('import-json-file').click()" class="theme-accent-bg border theme-accent-border theme-accent-text font-semibold text-xs py-2 px-3 rounded text-center transition">Import Backup</button>
+                        </div>
+                        <button onclick="confirmResetDatabase()" class="bg-red-950/45 hover:bg-red-900/40 text-red-300 font-semibold text-xs py-2 px-3 rounded text-center transition border border-red-700/20 w-full mt-1">Reset Database</button>
+                        
+                        <input type="file" id="import-json-file" accept=".json" class="hidden" onchange="handleImportJSON(event)">
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-end">
+                    <button onclick="closeSettingsModal()" class="px-4 py-2 theme-accent-bg border theme-accent-border theme-accent-text hover:bg-emerald-500 hover:text-white rounded text-xs font-medium transition shadow-md">Selesai & Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM DIALOG MODAL (REPLACING BROWSER CONFIRM) -->
+    <div id="custom-confirm-modal" class="hidden fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
+        <div class="theme-bg-card border theme-border rounded-xl max-w-sm w-full shadow-2xl p-6 text-center space-y-4 animate-fade-in">
+            <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            </div>
+            <div>
+                <h4 id="confirm-title" class="font-bold theme-text-main text-base">Konfirmasi</h4>
+                <p id="confirm-message" class="text-xs theme-text-muted mt-1 leading-relaxed">Apakah Anda yakin ingin melanjutkan tindakan ini?</p>
+            </div>
+            <div class="flex items-center gap-2 justify-center pt-2">
+                <button id="confirm-cancel-btn" class="px-4 py-2 theme-bg-main border theme-border hover:border-slate-500 theme-text-main rounded text-xs font-medium transition">Batal</button>
+                <button id="confirm-ok-btn" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-medium transition shadow-md">Ya, Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+        <!-- Toast elements dynamically injected here -->
+    </div>
+
+</div>
+
+<script>
+    const state = {
+        isLocked: true, // Dimulai dalam keadaan terkunci / menyamar
+        activeCover: 'chrome', // default cover
+        passcode: '1234', // default passcode untuk cover maintenance
+        blindTrigger: 'toeic', // kata kunci rahasia
+        typedBuffer: '', // buffer pencatatan pengetikan keyboard
+        currentFilterPart: 'all',
+        questions: [],
+        searchQuery: '',
+        temporaryImageBase64: '',
+        aiPanelOpen: false,
+        translations: {}, // id -> translated text cache
+        activeTheme: 'emerald-dark' // Default Active Theme
+    };
+
+    // DOM Nodes
+    const coverChrome = document.getElementById('cover-chrome');
+    const coverMaintenance = document.getElementById('cover-maintenance');
+    const realDashboard = document.getElementById('real-dashboard');
+    const globalSearchInput = document.getElementById('global-search-input');
+    const clearSearchBtn = document.getElementById('clear-search-btn');
+    const questionsGridContainer = document.getElementById('questions-grid-container');
+    const emptyState = document.getElementById('empty-state');
+    const counterMatch = document.getElementById('counter-match');
+    const counterTotal = document.getElementById('counter-total');
+    const btnBackToTop = document.getElementById('btn-back-to-top');
+    
+    // Modal Nodes
+    const questionModal = document.getElementById('question-modal');
+    const settingsModal = document.getElementById('settings-modal');
+    const welcomeBanner = document.getElementById('welcome-banner');
+    const customConfirmModal = document.getElementById('custom-confirm-modal');
+    const toastContainer = document.getElementById('toast-container');
+
+    window.onload = function() {
+        // Load settings dari local storage
+        if (localStorage.getItem('toeic_setting_cover')) {
+            state.activeCover = localStorage.getItem('toeic_setting_cover');
+            const checkedInput = document.querySelector(`input[name="cover-choice"][value="${state.activeCover}"]`);
+            if (checkedInput) checkedInput.checked = true;
+        }
+        if (localStorage.getItem('toeic_setting_passcode')) {
+            state.passcode = localStorage.getItem('toeic_setting_passcode');
+            const passcodeField = document.getElementById('setting-passcode');
+            if (passcodeField) passcodeField.value = state.passcode;
+        }
+        if (localStorage.getItem('toeic_welcome_dismissed')) {
+            if (welcomeBanner) welcomeBanner.classList.add('hidden');
+        }
+        
+        // Load UI Theme setting
+        if (localStorage.getItem('toeic_setting_theme')) {
+            state.activeTheme = localStorage.getItem('toeic_setting_theme');
+        }
+        applyUITheme(state.activeTheme);
+
+        // Muat Data Soal
+        loadQuestionsFromStorage();
+
+        // Terapkan penyamaran awal
+        applyLockState();
+
+        // Keyboard listeners
+        setupKeyboardListeners();
+
+        // Scroll listener untuk Back to Top
+        window.addEventListener('scroll', handleWindowScroll);
+    };
+
+    // Toast Notification Utility
+    function showNotification(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `flex items-center gap-2 px-4 py-3 rounded-lg shadow-2xl border text-xs text-white transform translate-y-2 opacity-0 transition-all duration-300 pointer-events-auto max-w-sm ${
+            type === 'success' 
+            ? 'bg-slate-900 border-emerald-500/30 text-emerald-300' 
+            : 'bg-slate-900 border-red-500/30 text-red-300'
+        }`;
+        
+        const icon = type === 'success' 
+            ? `<svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+            : `<svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>`;
+
+        toast.innerHTML = `
+            ${icon}
+            <span class="font-medium">${message}</span>
+        `;
+
+        toastContainer.appendChild(toast);
+        
+        // Trigger transition
+        setTimeout(() => {
+            toast.classList.remove('translate-y-2', 'opacity-0');
+        }, 10);
+
+        // Remove after delay
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'translate-y-2');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 4000);
+    }
+
+    // Custom Confirmation Dialog (Replaces confirm())
+    function showConfirmDialog(title, message, onOk) {
+        if (!customConfirmModal) return;
+        
+        const titleEl = document.getElementById('confirm-title');
+        const messageEl = document.getElementById('confirm-message');
+        const okBtn = document.getElementById('confirm-ok-btn');
+        const cancelBtn = document.getElementById('confirm-cancel-btn');
+
+        titleEl.innerText = title;
+        messageEl.innerText = message;
+        
+        customConfirmModal.classList.remove('hidden');
+
+        const closeConfirm = () => {
+            customConfirmModal.classList.add('hidden');
+        };
+
+        cancelBtn.onclick = closeConfirm;
+        okBtn.onclick = () => {
+            onOk();
+            closeConfirm();
+        };
+    }
+
+    // Watch Scroll Position to Toggle Back To Top Button
+    function handleWindowScroll() {
+        if (window.scrollY > 300) {
+            if (btnBackToTop) btnBackToTop.classList.remove('hidden');
+        } else {
+            if (btnBackToTop) btnBackToTop.classList.add('hidden');
+        }
+    }
+
+    // Scroll to Top smoothly
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    function loadQuestionsFromStorage() {
+        const raw = localStorage.getItem('toeic_questions');
+        if (raw) {
+            state.questions = JSON.parse(raw);
+        } else {
+            state.questions = [...DEFAULT_QUESTIONS];
+        }
+        renderQuestions();
+    }
+
+    function applyLockState() {
+        if (state.isLocked) {
+            if (realDashboard) realDashboard.classList.add('hidden');
+            if (coverChrome) coverChrome.classList.add('hidden');
+            if (coverMaintenance) coverMaintenance.classList.add('hidden');
+
+            if (state.activeCover === 'chrome' && coverChrome) {
+                coverChrome.classList.remove('hidden');
+            } else if (state.activeCover === 'maintenance' && coverMaintenance) {
+                coverMaintenance.classList.remove('hidden');
+                const secretInputField = document.getElementById('secret-input-field');
+                const hiddenPasscodeBox = document.getElementById('hidden-passcode-box');
+                if (secretInputField) secretInputField.value = '';
+                if (hiddenPasscodeBox) hiddenPasscodeBox.classList.add('hidden');
+            }
+            document.title = state.activeCover === 'chrome' ? "Situs ini tidak dapat dijangkau" : "Sistem Akademik - Maintenance";
+        } else {
+            if (coverChrome) coverChrome.classList.add('hidden');
+            if (coverMaintenance) coverMaintenance.classList.add('hidden');
+            if (realDashboard) realDashboard.classList.remove('hidden');
+            document.title = "TOEIC Search Hub";
+            
+            setTimeout(() => {
+                if (globalSearchInput) globalSearchInput.focus();
+            }, 100);
+        }
+    }
+
+    function lockApp() {
+        state.isLocked = true;
+        applyLockState();
+        showNotification("Layar berhasil dikunci kembali.", "success");
+    }
+
+    function unlockApp() {
+        state.isLocked = false;
+        applyLockState();
+        showNotification("Akses dikonfirmasi. Selamat datang!", "success");
+    }
+
+    function selectUITheme(themeName) {
+        state.activeTheme = themeName;
+        localStorage.setItem('toeic_setting_theme', themeName);
+        applyUITheme(themeName);
+        showNotification(`Tema UI berhasil diganti ke ${themeName}!`, "success");
+    }
+
+    function applyUITheme(themeName) {
+        const root = document.documentElement;
+        
+        // Remove existing theme data attribute
+        root.removeAttribute('data-theme');
+        
+        if (themeName !== 'emerald-dark') {
+            root.setAttribute('data-theme', themeName);
+        }
+
+        // Highlight active theme button in settings
+        const themes = ['emerald-dark', 'light', 'midnight', 'cobalt'];
+        themes.forEach(t => {
+            const btn = document.getElementById(`theme-btn-${t}`);
+            if (btn) {
+                if (t === themeName) {
+                    btn.classList.add('border-emerald-500', 'ring-2', 'ring-emerald-500/25');
+                    btn.classList.remove('border-slate-800', 'border-slate-200', 'theme-border');
+                } else {
+                    btn.classList.remove('border-emerald-500', 'ring-2', 'ring-emerald-500/25');
+                    btn.classList.add('theme-border');
+                }
+            }
+        });
+    }
+
+    // Keyboard Event Handlers for Hotkeys
+    function setupKeyboardListeners() {
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (!state.isLocked) {
+                    lockApp();
+                    e.preventDefault();
+                }
+            }
+        });
+
+        document.addEventListener('keypress', function(e) {
+            if (state.isLocked) {
+                state.typedBuffer += e.key.toLowerCase();
+                if (state.typedBuffer.length > 20) {
+                    state.typedBuffer = state.typedBuffer.substring(state.typedBuffer.length - 20);
+                }
+                if (state.typedBuffer.includes(state.blindTrigger)) {
+                    state.typedBuffer = '';
+                    unlockApp();
+                }
+            }
+        });
+
+        const secretInputField = document.getElementById('secret-input-field');
+        if (secretInputField) {
+            secretInputField.addEventListener('input', function(e) {
+                if (e.target.value === state.passcode) {
+                    unlockApp();
+                }
+            });
+        }
+    }
+
+    // Fake Refresh Button action inside Chrome Error cover
+    function attemptRefresh() {
+        const btn = document.getElementById('btn-chrome-refresh');
+        if (btn) {
+            btn.innerHTML = 'Menghubungkan...';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = 'Muat Ulang';
+                btn.disabled = false;
+            }, 1500);
+        }
+    }
+
+    function revealSecretUnlockInput() {
+        const container = document.getElementById('hidden-passcode-box');
+        const inputField = document.getElementById('secret-input-field');
+        if (container) {
+            container.classList.toggle('hidden');
+            if (!container.classList.contains('hidden') && inputField) {
+                inputField.focus();
+            }
+        }
+    }
+
+    // Search Trigger
+    function handleSearchChange() {
+        if (!globalSearchInput) return;
+        state.searchQuery = globalSearchInput.value.toLowerCase().trim();
+        
+        if (state.searchQuery.length > 0 && clearSearchBtn) {
+            clearSearchBtn.classList.remove('hidden');
+        } else if (clearSearchBtn) {
+            clearSearchBtn.classList.add('hidden');
+        }
+
+        renderQuestions();
+    }
+
+    // Reset dan hapus isi input box pencarian
+    function clearSearch() {
+        if (globalSearchInput) {
+            globalSearchInput.value = '';
+            state.searchQuery = '';
+            if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+            globalSearchInput.focus();
+            renderQuestions();
+        }
+    }
+
+    function setPartFilter(part) {
+        state.currentFilterPart = part;
+        
+        const filterBtns = document.querySelectorAll('#filter-part-group button');
+        filterBtns.forEach(btn => {
+            btn.className = "px-3 py-1 theme-bg-main border theme-border hover:border-slate-500 theme-text-muted hover:theme-text-main rounded-full text-xs font-semibold transition duration-150";
+        });
+
+        const activeMap = {
+            'all': 'btn-filter-all',
+            'Part 1': 'btn-filter-p1',
+            'Part 2': 'btn-filter-p2',
+            'Part 3': 'btn-filter-p3',
+            'Part 4': 'btn-filter-p4',
+            'Part 5': 'btn-filter-p5',
+            'Part 6': 'btn-filter-p6',
+            'Part 7': 'btn-filter-p7',
+        };
+
+        const activeBtn = document.getElementById(activeMap[part]);
+        if (activeBtn) {
+            activeBtn.className = "px-3 py-1 theme-accent-bg theme-accent-text border theme-accent-border rounded-full text-xs font-semibold shadow transition duration-150";
+        }
+
+        renderQuestions();
+    }
+
+    // Menyoroti substring yang cocok di HTML secara aman
+    function highlightText(text, query) {
+        if (!query) return text;
+        const index = text.toLowerCase().indexOf(query);
+        if (index === -1) return text;
+        
+        const originalPart = text.substring(index, index + query.length);
+        const leftPart = text.substring(0, index);
+        const rightPart = text.substring(index + query.length);
+
+        return `${leftPart}<mark class="bg-yellow-300 text-slate-950 font-semibold rounded-sm px-0.5">${originalPart}</mark>${highlightText(rightPart, query)}`;
+    }
+
+    // CALL GEMINI AI API FOR TRANSLATION
+    async function callGeminiTranslation(text, promptGuidance = "") {
+        const apiKey = ""; // Canvas auto-injects this key
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        
+        const systemPrompt = `You are a professional, expert English-Indonesian translator specializing in TOEFL/TOEIC academic English. Translate the provided text into clear, highly natural Indonesian. Keep specific formatting like underscores (-----) intact. Do not add conversational intro/outro. Provide ONLY the direct translation output. ${promptGuidance}`;
+
+        const payload = {
+            contents: [{ parts: [{ text: text }] }],
+            systemInstruction: {
+                parts: [{ text: systemPrompt }]
+            }
+        };
+
+        // Implementation of exponential backoff retry loop
+        let delay = 1000;
+        for (let attempt = 0; attempt < 3; attempt++) {
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.status === 429) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                    continue;
+                }
+
+                const result = await response.json();
+                const translated = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+                if (translated) return translated.trim();
+                
+                throw new Error("Format output Gemini tidak sesuai.");
+            } catch (err) {
+                if (attempt === 2) {
+                    throw err;
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+            }
+        }
+        return null;
+    }
+
+    // Menerjemahkan soal di kartu tertentu
+    async function translateQuestionCard(id) {
+        const q = state.questions.find(x => x.id === id);
+        if (!q) return;
+
+        const transBtn = document.getElementById(`btn-trans-${id}`);
+        const transBox = document.getElementById(`trans-box-${id}`);
+        
+        if (!transBtn || !transBox) return;
+
+        // Toggle visibility if already translated
+        if (state.translations[id]) {
+            transBox.classList.toggle('hidden');
+            return;
+        }
+
+        // Show loading spinner
+        transBtn.innerHTML = `
+            <svg class="animate-spin h-3.5 w-3.5 text-white inline mr-1" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+            </svg>
+            <span>Menerjemahkan...</span>
+        `;
+        transBtn.disabled = true;
+
+        let textToTranslate = `Question: ${q.questionText}\n`;
+        if (q.options && q.options.length > 0) {
+            textToTranslate += `Options:\n${q.options.join("\n")}`;
+        }
+
+        try {
+            const translationResult = await callGeminiTranslation(textToTranslate, "Give translation for both the main question and the options clearly.");
+            
+            if (translationResult) {
+                state.translations[id] = translationResult;
+                transBox.innerHTML = `
+                    <div class="flex items-center gap-1 theme-accent-text font-semibold mb-1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                        </svg>
+                        <span>Terjemahan AI (Bahasa Indonesia)</span>
+                    </div>
+                    <p class="whitespace-pre-wrap leading-relaxed text-[11px] theme-text-sub">${translationResult}</p>
+                `;
+                transBox.classList.remove('hidden');
+                showNotification("Terjemahan selesai diproses!", "success");
+            } else {
+                showNotification("Gagal memproses terjemahan.", "error");
+            }
+        } catch (error) {
+            showNotification("Koneksi gagal atau API bermasalah.", "error");
+        } finally {
+            transBtn.innerHTML = `
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                </svg>
+                <span>Sembunyikan Terjemahan</span>
+            `;
+            transBtn.disabled = false;
+        }
+    }
+
+    // Toggle panel asisten kamus melayang
+    function toggleAIPanel() {
+        const body = document.getElementById('ai-panel-body');
+        if (body) {
+            body.classList.toggle('hidden');
+            state.aiPanelOpen = !body.classList.contains('hidden');
+        }
+    }
+
+    // Terjemahan instan dalam panel kamus melayang
+    async function handleAITranslateAction() {
+        const input = document.getElementById('ai-input-text');
+        const outputBox = document.getElementById('ai-output-box');
+        
+        if (!input || !outputBox || !input.value.trim()) return;
+
+        outputBox.innerHTML = `
+            <div class="flex items-center justify-center gap-2 py-4 theme-text-muted">
+                <svg class="animate-spin h-4 w-4 theme-accent-text" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+                <span>Mencari terjemahan...</span>
+            </div>
+        `;
+        outputBox.classList.remove('hidden');
+
+        try {
+            const promptGuidance = "Explain difficult idioms or grammar structures if present briefly.";
+            const res = await callGeminiTranslation(input.value.trim(), promptGuidance);
+            if (res) {
+                outputBox.innerHTML = `
+                    <p class="font-semibold theme-accent-text mb-1">Hasil Terjemahan & Penjelasan:</p>
+                    <p class="whitespace-pre-wrap text-xs">${res}</p>
+                `;
+            } else {
+                outputBox.innerHTML = `<span class="text-red-400">Gagal menerjemahkan teks.</span>`;
+            }
+        } catch (e) {
+            outputBox.innerHTML = `<span class="text-red-400">Terjadi kesalahan koneksi.</span>`;
+        }
+    }
+
+    // RENDER SOAL PADA HALAMAN UTAMA
+    function renderQuestions() {
+        const filtered = state.questions.filter(item => {
+            if (state.currentFilterPart !== 'all' && item.part !== state.currentFilterPart) {
+                return false;
+            }
+
+            if (state.searchQuery) {
+                const combinedText = `
+                    ${item.questionText} 
+                    ${item.options ? item.options.join(' ') : ''} 
+                    ${item.correctAnswer} 
+                    ${item.explanation || ''} 
+                    ${item.tags || ''} 
+                    ${item.part}
+                `.toLowerCase();
+                
+                return combinedText.includes(state.searchQuery);
+            }
+
+            return true;
+        });
+
+        // Urutkan soal secara numerik berdasarkan nomor depannya
+        filtered.sort((a, b) => {
+            const numA = parseInt(a.questionText) || 0;
+            const numB = parseInt(b.questionText) || 0;
+            return numA - numB;
+        });
+
+        if (counterMatch) counterMatch.innerText = filtered.length;
+        if (counterTotal) counterTotal.innerText = state.questions.length;
+
+        if (!questionsGridContainer) return;
+        questionsGridContainer.innerHTML = '';
+
+        if (filtered.length === 0) {
+            if (emptyState) emptyState.classList.remove('hidden');
+            return;
+        }
+
+        if (emptyState) emptyState.classList.add('hidden');
+
+        filtered.forEach(q => {
+            const card = document.createElement('div');
+            card.className = "theme-bg-card border theme-border rounded-xl overflow-hidden shadow-lg transition duration-200 theme-border-hover";
+            
+            let optionsHTML = '';
+            if (q.options && q.options.length > 0) {
+                optionsHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-3 pl-2">`;
+                q.options.forEach(opt => {
+                    const isCorrect = opt.startsWith(q.correctAnswer.charAt(0)) || opt === q.correctAnswer;
+                    const optClass = isCorrect 
+                        ? 'theme-accent-border theme-accent-bg theme-accent-text font-semibold' 
+                        : 'theme-border theme-bg-main theme-text-sub';
+                    optionsHTML += `
+                        <div class="border rounded-lg p-2.5 text-xs flex items-center gap-2 ${optClass}">
+                            <span class="w-4 h-4 rounded-full flex items-center justify-center border text-[9px] ${isCorrect ? 'bg-emerald-500 border-emerald-400 text-slate-900' : 'theme-border'}">✓</span>
+                            <span>${highlightText(opt, state.searchQuery)}</span>
+                        </div>
+                    `;
+                });
+                optionsHTML += `</div>`;
+            }
+
+            let imageHTML = '';
+            if (q.imageBase64) {
+                imageHTML = `
+                    <div class="mt-4 p-2 theme-bg-main rounded-lg border theme-border max-w-full overflow-hidden text-center cursor-pointer hover:opacity-95 transition" onclick="viewLargeImage('${q.id}')">
+                        <img src="${q.imageBase64}" class="max-h-52 md:max-h-72 mx-auto object-contain rounded-md">
+                        <span class="text-[9px] theme-text-muted mt-1 block hover:underline">🔍 Klik untuk perbesar gambar</span>
+                    </div>
+                `;
+            }
+
+            const transVal = state.translations[q.id];
+            const hasTranslation = !!transVal;
+
+            card.innerHTML = `
+                <div class="p-4 md:p-5 flex flex-col gap-2">
+                    <div class="flex items-center justify-between gap-2 border-b theme-border pb-2 mb-2">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span class="theme-accent-bg theme-accent-text text-[10px] font-bold px-2 py-0.5 rounded border theme-accent-border">${q.part}</span>
+                            ${q.tags ? q.tags.split(',').map(tag => `<span class="theme-bg-main theme-text-muted text-[9px] border theme-border font-medium px-1.5 py-0.5 rounded">${highlightText(tag.trim(), state.searchQuery)}</span>`).join('') : ''}
+                        </div>
+                        
+                        <div class="flex items-center gap-1">
+                            <button id="btn-trans-${q.id}" onclick="translateQuestionCard('${q.id}')" class="flex items-center gap-1 theme-accent-bg theme-accent-text border theme-accent-border hover:opacity-90 px-2.5 py-1.5 rounded text-[10px] font-semibold transition" title="Menerjemahkan Soal ini">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                                </svg>
+                                <span>${hasTranslation ? 'Sembunyikan Terjemahan' : 'Terjemahkan Soal'}</span>
+                            </button>
+
+                            <button onclick="editQuestion('${q.id}')" class="p-1.5 hover:theme-bg-main theme-text-muted hover:theme-text-main rounded transition" title="Edit Soal">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                </svg>
+                            </button>
+                            <button onclick="deleteQuestion('${q.id}')" class="p-1.5 hover:bg-red-950/30 theme-text-muted hover:text-red-400 rounded transition" title="Hapus Soal">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question Text -->
+                    <div class="text-xs md:text-sm theme-text-main font-medium leading-relaxed pl-1">
+                        ${highlightText(q.questionText, state.searchQuery)}
+                    </div>
+
+                    <!-- Dynamic Translation Output -->
+                    <div id="trans-box-${q.id}" class="${hasTranslation ? '' : 'hidden'} mt-2 theme-accent-bg border theme-accent-border p-3 rounded-lg text-xs theme-text-sub animate-fade-in">
+                        ${hasTranslation ? `
+                            <div class="flex items-center gap-1 theme-accent-text font-semibold mb-1">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 11.37 7.31 16.5 3 19"/>
+                                </svg>
+                                <span>Terjemahan AI (Bahasa Indonesia)</span>
+                            </div>
+                            <p class="whitespace-pre-wrap leading-relaxed text-[11px] theme-text-sub">${transVal}</p>
+                        ` : ''}
+                    </div>
+
+                    <!-- Options list -->
+                    ${optionsHTML}
+
+                    <!-- Image container -->
+                    ${imageHTML}
+
+                    <!-- Correct Answer Badge -->
+                    <div class="mt-3 theme-accent-bg border theme-accent-border rounded-lg p-3 text-xs theme-text-sub">
+                        <div class="flex items-center gap-1.5 mb-1.5">
+                            <span class="bg-emerald-500 text-slate-950 font-extrabold text-[10px] px-1.5 py-0.5 rounded">KUNCI</span>
+                            <span class="font-bold theme-accent-text">${highlightText(q.correctAnswer, state.searchQuery)}</span>
+                        </div>
+                        ${q.explanation ? `<p class="theme-text-muted leading-relaxed text-[11px]"><strong class="theme-text-sub">Penjelasan:</strong> ${highlightText(q.explanation, state.searchQuery)}</p>` : ''}
+                    </div>
+                </div>
+            `;
+            
+            questionsGridContainer.appendChild(card);
+        });
+    }
+
+    // IMAGE UPLOAD & COMPRESSOR UTILITY
+    function handleImageUpload(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const uploadStatus = document.getElementById('upload-status');
+        const imgPreviewContainer = document.getElementById('image-preview-container');
+        const imgPreviewImg = document.getElementById('image-preview-img');
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const max_size = 750;
+
+                if (width > height) {
+                    if (width > max_size) {
+                        height *= max_size / width;
+                        width = max_size;
+                    }
+                } else {
+                    if (height > max_size) {
+                        width *= max_size / height;
+                        height = max_size;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const compressedBase64 = canvas.toDataURL('image/jpeg', 0.55);
+                state.temporaryImageBase64 = compressedBase64;
+
+                if (imgPreviewImg) imgPreviewImg.src = compressedBase64;
+                if (imgPreviewContainer) imgPreviewContainer.classList.remove('hidden');
+                if (uploadStatus) uploadStatus.classList.remove('hidden');
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeUploadedImage() {
+        state.temporaryImageBase64 = '';
+        const imageInput = document.getElementById('form-image-input');
+        const imageContainer = document.getElementById('image-preview-container');
+        const uploadStatus = document.getElementById('upload-status');
+        
+        if (imageInput) imageInput.value = '';
+        if (imageContainer) imageContainer.classList.add('hidden');
+        if (uploadStatus) uploadStatus.classList.add('hidden');
+    }
+
+    // CRUD: Modal operations
+    function openQuestionModal(isEdit = false) {
+        if (!questionModal) return;
+        questionModal.classList.remove('hidden');
+        if (!isEdit) {
+            const formTitle = document.getElementById('modal-title');
+            const qId = document.getElementById('form-question-id');
+            const qText = document.getElementById('form-question-text');
+            const optA = document.getElementById('form-opt-a');
+            const optB = document.getElementById('form-opt-b');
+            const optC = document.getElementById('form-opt-c');
+            const optD = document.getElementById('form-opt-d');
+            const correctAns = document.getElementById('form-correct-answer');
+            const tags = document.getElementById('form-tags');
+            const explanation = document.getElementById('form-explanation');
+
+            if (formTitle) formTitle.innerText = "Tambah Soal Baru";
+            if (qId) qId.value = '';
+            if (qText) qText.value = '';
+            if (optA) optA.value = '';
+            if (optB) optB.value = '';
+            if (optC) optC.value = '';
+            if (optD) optD.value = '';
+            if (correctAns) correctAns.value = '';
+            if (tags) tags.value = '';
+            if (explanation) explanation.value = '';
+            removeUploadedImage();
+        }
+    }
+
+    function closeQuestionModal() {
+        if (questionModal) questionModal.classList.add('hidden');
+    }
+
+    function saveQuestion(e) {
+        e.preventDefault();
+
+        const id = document.getElementById('form-question-id').value || 'q_' + Date.now();
+        const part = document.getElementById('form-part').value;
+        const tags = document.getElementById('form-tags').value;
+        const questionText = document.getElementById('form-question-text').value;
+        const optA = document.getElementById('form-opt-a').value;
+        const optB = document.getElementById('form-opt-b').value;
+        const optC = document.getElementById('form-opt-c').value;
+        const optD = document.getElementById('form-opt-d').value;
+        const correctAnswer = document.getElementById('form-correct-answer').value;
+        const explanation = document.getElementById('form-explanation').value;
+
+        const options = [];
+        if (optA) options.push("A. " + optA.replace(/^[A-Da-d]\.\s*/, ''));
+        if (optB) options.push("B. " + optB.replace(/^[A-Da-d]\.\s*/, ''));
+        if (optC) options.push("C. " + optC.replace(/^[A-Da-d]\.\s*/, ''));
+        if (optD) options.push("D. " + optD.replace(/^[A-Da-d]\.\s*/, ''));
+
+        const newQuestionObj = {
+            id,
+            part,
+            tags,
+            questionText,
+            options,
+            correctAnswer,
+            explanation,
+            imageBase64: state.temporaryImageBase64
+        };
+
+        const existingIndex = state.questions.findIndex(x => x.id === id);
+        if (existingIndex > -1) {
+            state.questions[existingIndex] = newQuestionObj;
+            showNotification("Soal berhasil diperbarui!", "success");
+        } else {
+            state.questions.unshift(newQuestionObj);
+            showNotification("Soal baru ditambahkan!", "success");
+        }
+
+        localStorage.setItem('toeic_questions', JSON.stringify(state.questions));
+        loadQuestionsFromStorage();
+        closeQuestionModal();
+    }
+
+    function editQuestion(id) {
+        const item = state.questions.find(x => x.id === id);
+        if (!item) return;
+
+        openQuestionModal(true);
+        const formTitle = document.getElementById('modal-title');
+        const qId = document.getElementById('form-question-id');
+        const formPart = document.getElementById('form-part');
+        const formTags = document.getElementById('form-tags');
+        const qText = document.getElementById('form-question-text');
+        const optA = document.getElementById('form-opt-a');
+        const optB = document.getElementById('form-opt-b');
+        const optC = document.getElementById('form-opt-c');
+        const optD = document.getElementById('form-opt-d');
+        const correctAns = document.getElementById('form-correct-answer');
+        const explanation = document.getElementById('form-explanation');
+
+        if (formTitle) formTitle.innerText = "Edit Soal TOEIC";
+        if (qId) qId.value = item.id;
+        if (formPart) formPart.value = item.part;
+        if (formTags) formTags.value = item.tags || '';
+        if (qText) qText.value = item.questionText;
+        
+        if (optA) optA.value = item.options[0] ? item.options[0].replace(/^[A-Da-d]\.\s*/, '') : '';
+        if (optB) optB.value = item.options[1] ? item.options[1].replace(/^[A-Da-d]\.\s*/, '') : '';
+        if (optC) optC.value = item.options[2] ? item.options[2].replace(/^[A-Da-d]\.\s*/, '') : '';
+        if (optD) optD.value = item.options[3] ? item.options[3].replace(/^[A-Da-d]\.\s*/, '') : '';
+        
+        if (correctAns) correctAns.value = item.correctAnswer;
+        if (explanation) explanation.value = item.explanation || '';
+
+        const previewImg = document.getElementById('image-preview-img');
+        const previewContainer = document.getElementById('image-preview-container');
+        if (item.imageBase64) {
+            state.temporaryImageBase64 = item.imageBase64;
+            if (previewImg) previewImg.src = item.imageBase64;
+            if (previewContainer) previewContainer.classList.remove('hidden');
+        } else {
+            removeUploadedImage();
+        }
+    }
+
+    function confirmResetDatabase() {
+        showConfirmDialog(
+            "Reset Database", 
+            "⚠ PENTING: Semua soal, jawaban kustom, dan screenshot yang Anda masukkan sendiri akan dihapus permanen. Lanjutkan?", 
+            () => {
+                localStorage.removeItem('toeic_questions');
+                loadQuestionsFromStorage();
+                closeSettingsModal();
+                showNotification("Database berhasil direset ke setelan awal.", "success");
+            }
+        );
+    }
+
+    // Menghapus soal dari database pencarian
+    function deleteQuestion(id) {
+        showConfirmDialog(
+            "Hapus Soal", 
+            "Apakah Anda yakin ingin menghapus soal ini dari database pencarian Anda secara permanen?", 
+            () => {
+                state.questions = state.questions.filter(x => x.id !== id);
+                localStorage.setItem('toeic_questions', JSON.stringify(state.questions));
+                loadQuestionsFromStorage();
+                showNotification("Soal berhasil dihapus.", "success");
+            }
+        );
+    }
+
+    function viewLargeImage(id) {
+        const item = state.questions.find(x => x.id === id);
+        if (!item || !item.imageBase64) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = "fixed inset-0 bg-black/95 z-50 flex flex-col items-center justify-center p-4 cursor-zoom-out";
+        overlay.innerHTML = `
+            <div class="relative max-w-4xl max-h-[85vh] w-full flex items-center justify-center">
+                <img src="${item.imageBase64}" class="max-w-full max-h-[85vh] object-contain rounded border theme-border">
+            </div>
+            <p class="text-xs text-slate-500 mt-4 font-semibold text-center">Klik di mana saja untuk menutup pratinjau</p>
+        `;
+        overlay.onclick = function() {
+            document.body.removeChild(overlay);
+        };
+        document.body.appendChild(overlay);
+    }
+
+    // CONFIGURATION MODALS INTERACTION
+    function openSettingsModal() {
+        if (settingsModal) settingsModal.classList.remove('hidden');
+    }
+
+    function handleImportJSON(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            try {
+                const parsedData = JSON.parse(event.target.result);
+                if (Array.isArray(parsedData)) {
+                    state.questions = parsedData;
+                    localStorage.setItem('toeic_questions', JSON.stringify(state.questions));
+                    loadQuestionsFromStorage();
+                    showNotification(`Berhasil mengimpor ${parsedData.length} soal ke database!`, "success");
+                    closeSettingsModal();
+                } else {
+                    showNotification("Format file salah. Harus berupa array JSON.", "error");
+                }
+            } catch (err) {
+                showNotification("Gagal membaca file JSON.", "error");
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    function closeSettingsModal() {
+        const passcodeVal = document.getElementById('setting-passcode').value.trim();
+        if (passcodeVal) {
+            state.passcode = passcodeVal;
+            localStorage.setItem('toeic_setting_passcode', state.passcode);
+        }
+        if (settingsModal) settingsModal.classList.add('hidden');
+    }
+
+    function handleCoverChoiceChange(coverValue) {
+        state.activeCover = coverValue;
+        localStorage.setItem('toeic_setting_cover', state.activeCover);
+        showNotification(`Gaya penyamaran diganti ke: ${coverValue}`, "success");
+    }
+
+    function dismissWelcomeBanner() {
+        if (welcomeBanner) welcomeBanner.classList.add('hidden');
+        localStorage.setItem('toeic_welcome_dismissed', 'true');
+    }
+
+    function exportDataJSON() {
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state.questions, null, 2));
+        const downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `backup_toeic_questions_${Date.now()}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+        showNotification("Berhasil mengekspor data backup!", "success");
+    }
+</script>
+</body>
+</html>
